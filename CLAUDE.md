@@ -1,0 +1,99 @@
+# Chart Sins — working notes
+
+Conventions and gotchas for anyone (human or agent) working in this repo.
+Keep this current when a convention changes.
+
+## What this is
+
+Chart Sins is **"nohello.net for bad charts."** The unit of value is a single,
+linkable, cited page you send someone instead of re-explaining, for the
+hundredth time, why their chart misleads. The gallery is secondary; the per-sin
+page is the product.
+
+Each sin page follows one shape: **poke → proof → why → the fix → receipts → share.**
+
+## Voice & content conventions
+
+- **The poke names the general sin, never the sample's specifics.** A visitor
+  didn't "start the axis at 90" — they mis-set the baseline. Write
+  "Your bars don't start at zero…", not the numbers from our example data.
+- **Tone: cheeky, not moralizing.** "Caught — here are the receipts," not
+  "repent." Poke the mistake, keep it light.
+- **Same numbers, both charts.** The bad and fixed charts must share one dataset
+  so the page *proves* dishonest-vs-honest by construction. Charts are authored
+  as Vega-Lite specs and rendered at build time — never screenshots.
+- **The bad chart is intentionally wrong; the fixed chart must obey the rules.**
+  (e.g. the dual-axis "sin" deliberately breaks the one-axis rule; its fix uses
+  separate honest panels.) When picking chart colors or building a new chart,
+  run the `dataviz` skill and validate the palette with its validator.
+- **Citations are core.** Every sin cites the canon (`src/lib/references.ts`)
+  under "Don't take our word for it." Don't invent authority — point at it.
+- **Internal build decisions stay out of visitor-facing content and the DOM.**
+  The design system (Carbon), the typeface (IBM Plex), and the inspiration
+  (nohello.net) are engineering choices — they must not appear in page copy,
+  the footer, meta tags, or CSS class names on the public site. (They were
+  scrubbed once already; keep them out.) Naming them *here*, in repo docs, is
+  fine.
+
+## Adding a sin
+
+1. Author two Vega-Lite specs in `src/charts/`, e.g. `my-sin-bad.json` and
+   `my-sin-fixed.json`. Same underlying data in both. Omit `$schema`/`config`;
+   explicit `width`/`height` are fine. The bad one breaks a rule on purpose; the
+   fixed one is correct.
+2. Add `src/content/sins/my-sin.md` with frontmatter (schema in
+   `src/content.config.ts`):
+   ```yaml
+   title, summary, poke, category, severity (1–5), tags[],
+   badChart, fixedChart, date, draft, citations: [{ key, note }]
+   ```
+   `badChart`/`fixedChart` are the spec basenames (no `.json`). `citations[].key`
+   must exist in `src/lib/references.ts` (build throws otherwise).
+3. New reference? Add it once to `src/lib/references.ts`, then cite its key.
+4. `npm run dev` and check. The OG card for the sin is generated automatically.
+
+## Design & rendering
+
+- **Astro 5, static output, zero client JS** — the one exception is the small
+  progressive-enhancement copy-link script on the sin page.
+- Styling is a **token layer** (`src/styles/global.css`) built on Carbon design
+  tokens: layered light/dark themes, 8px spacing scale, IBM Plex (self-hosted
+  via `@fontsource`), square geometry, a 2px focus ring. Class prefix is
+  `site-` (not `cds-`).
+- **Charts** render to static SVG at build via the shared pipeline in
+  `src/lib/renderChart.ts` (used by both the on-page component and the OG
+  generator, so they stay identical). Charts sit on a **fixed light canvas**
+  (`--chart-canvas`) in both themes so the single baked SVG keeps AA contrast.
+- The categorical palette is Carbon's data-vis palette, **validated** for
+  colorblind-safety/contrast on the chart surface. Re-validate if you change it.
+
+## OpenGraph cards
+
+- Per-sin 1200×630 cards are generated **at build time** — no browser.
+  `src/lib/og.ts` composes with `satori`, rasterizes with `@resvg/resvg-js`;
+  endpoints are `src/pages/og/[slug].png.ts` and `og/default.png.ts`.
+- Card content stays lean: poke + before/after charts + severity + category.
+  No citation list on the card (that lives on the page).
+- Fonts: three IBM Plex TTF weights are committed under `src/og/fonts/` (satori
+  and resvg need real font files; the `@fontsource` woff2 won't do).
+- **satori gotchas** (all learned the hard way): empty `<div>`s in a flex row
+  each need their own `display:flex`; don't put a quoted `font-family` in an
+  inline `style` (it breaks the style parse — set the default font via satori's
+  `fonts` instead); trim the markup so there's a single root node; give `<img>`
+  dimensions in the `style` as px; cap charts by **height** so tall vconcat
+  charts don't overflow.
+
+## Deploy & ops
+
+- GitHub Pages via `.github/workflows/deploy.yml`, triggered on push to `main`
+  (plus `workflow_dispatch`). Project path is configured in `astro.config.mjs`
+  (`site` + `base` → `/chart-sins`).
+- **Known gotcha — the default branch.** The repo's default branch is currently
+  the feature branch (it was the first branch pushed into the empty repo). The
+  auto-created `github-pages` environment only allows deploys from the **default
+  branch**, so a push to `main` builds but the *deploy* job is rejected. Until
+  this is fixed we deploy by **dispatching the workflow on the default branch**.
+  **Fix:** set the default branch to `main` (Settings → General); then plain
+  pushes to `main` deploy normally and this note can go away.
+- Pages had to be **enabled manually** once (Settings → Pages → Source: GitHub
+  Actions) — the Actions token can't create the Pages site itself.
