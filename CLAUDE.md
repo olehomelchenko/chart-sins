@@ -53,7 +53,16 @@ Each sin page follows one shape: **poke → proof → why → the fix → receip
   curate**, and coverage of it is not a goal in itself.
   Never stretch a source to fit: if it doesn't actually make the claim, cite one
   that does or leave it out. Getting an attribution wrong costs more than a
-  thinner page. A source that *complicates* our position (Kosara on pie charts,
+  thinner page.
+  **When you can't reach a source, don't guess and don't quietly settle for a
+  weaker page** — a lot of this material is behind 403s, paywalls and JSTOR.
+  Add the link and the specific question to `docs/source-requests.md`; a human
+  drops the content into `docs/sources/` and you finish the note from it. Same
+  file holds the register of claims already live on the site that rest on recall
+  rather than a source anyone opened — add to it when you write from memory,
+  rather than leaving the page looking better-sourced than it is. Never invent a
+  URL to fill a `url` field; leaving it empty is the correct move (`huff`,
+  `shapeparameter`, `economistmistakes` all ship without one). A source that *complicates* our position (Kosara on pie charts,
   Datawrapper's second thoughts on dual axes) is worth citing too — say so in
   the note.
 - **Internal build decisions stay out of visitor-facing content and the DOM.**
