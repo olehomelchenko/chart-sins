@@ -23,9 +23,10 @@ const fixedSpec = getChartSpec(sin.data.fixedChart);
 
 // Canonical, shareable URL for this sin — the thing you paste into a thread.
 const pageUrl = new URL(href(`sins/${sin.id}/`), Astro.site).toString();
+const ogImage = new URL(href(`og/${sin.id}.png`), Astro.site).toString();
 ---
 
-<BaseLayout title={`${sin.data.title} — Chart Sins`} description={sin.data.poke}>
+<BaseLayout title={`${sin.data.title} — Chart Sins`} description={sin.data.poke} image={ogImage}>
   <article class="wrap sin">
     <nav class="breadcrumb"><a href={href()}>All sins</a> / {sin.data.title}</nav>
 

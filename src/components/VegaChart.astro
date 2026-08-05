@@ -8,8 +8,8 @@
 //
 // The chart sits on a fixed light canvas (--chart-canvas) in both themes, so
 // this single baked render keeps AA contrast in light and dark.
-import * as vega from 'vega';
-import { compile, type TopLevelSpec, type Config } from 'vega-lite';
+import type { TopLevelSpec } from 'vega-lite';
+import { renderChartSvg } from '../lib/renderChart';
 
 interface Props {
   spec: TopLevelSpec;
@@ -19,56 +19,11 @@ interface Props {
 
 const { spec, title, caption } = Astro.props;
 
-// Chart theme — the visual parameters the renderer consumes.
-const chartTheme: Config = {
-  font: 'IBM Plex Sans',
-  background: 'transparent',
-  view: { stroke: null },
-  title: {
-    color: '#161616',
-    font: 'IBM Plex Sans',
-    fontSize: 13,
-    fontWeight: 600,
-    anchor: 'start',
-    dy: -8,
-  },
-  axis: {
-    labelFont: 'IBM Plex Sans',
-    labelFontSize: 11,
-    labelColor: '#525252',
-    titleFont: 'IBM Plex Sans',
-    titleFontSize: 12,
-    titleFontWeight: 600,
-    titleColor: '#393939',
-    gridColor: '#e0e0e0',
-    domainColor: '#8d8d8d',
-    tickColor: '#8d8d8d',
-    labelPadding: 4,
-  },
-  legend: {
-    labelFont: 'IBM Plex Sans',
-    labelFontSize: 11,
-    labelColor: '#525252',
-    titleFont: 'IBM Plex Sans',
-    titleFontSize: 12,
-    titleColor: '#393939',
-    symbolType: 'square',
-  },
-  // Categorical palette (validated colorblind-safe/contrast on the
-  // --chart-canvas surface).
-  range: {
-    category: ['#8a3ffc', '#009d9a', '#fa4d56', '#0f62fe', '#24a148', '#d02670', '#b28600', '#1192e8'],
-  },
-};
-
 let svg = '';
 let error: string | null = null;
 
 try {
-  const vgSpec = compile(spec, { config: chartTheme }).spec;
-  const view = new vega.View(vega.parse(vgSpec), { renderer: 'none' }).initialize();
-  svg = await view.toSVG();
-  view.finalize();
+  svg = await renderChartSvg(spec);
 } catch (e) {
   error = e instanceof Error ? e.message : String(e);
   console.error(`[VegaChart] failed to render "${title}": ${error}`);
