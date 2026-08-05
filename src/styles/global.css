@@ -1,0 +1,235 @@
+:root {
+  --bg: #fbf9f6;
+  --surface: #ffffff;
+  --text: #1c1a17;
+  --muted: #6b6660;
+  --border: #e6e1d9;
+  --accent: #7c3aed;
+  --sin-red: #c0392b;
+  --good-green: #1e8b5b;
+  --maxw: 68rem;
+  --radius: 12px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16140f;
+    --surface: #201d17;
+    --text: #f3efe8;
+    --muted: #a8a196;
+    --border: #35302a;
+    --accent: #a78bfa;
+    --sin-red: #e07668;
+    --good-green: #4cc38a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.site-header .wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding-block: 1rem;
+  flex-wrap: wrap;
+}
+.site-header a.brand {
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-decoration: none;
+}
+.site-header .tagline {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.site-footer .wrap {
+  padding-block: 2rem;
+}
+
+.severity {
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  color: var(--sin-red);
+}
+
+.pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: var(--bg);
+}
+
+/* --- index gallery --- */
+.hero {
+  padding-block: 3rem 1.5rem;
+}
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.1;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+}
+.hero p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  max-width: 44rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: 1.25rem;
+  padding-block: 1rem 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+.card h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+.card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.card .meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+/* --- sin detail page --- */
+.sin {
+  padding-block: 2.5rem;
+}
+.sin header {
+  margin-bottom: 2rem;
+}
+.sin h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin: 0.4rem 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+.sin .tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+@media (min-width: 46rem) {
+  .compare {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.compare .panel {
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.compare .panel.bad {
+  border-top: 4px solid var(--sin-red);
+}
+.compare .panel.good {
+  border-top: 4px solid var(--good-green);
+}
+.compare .panel h2 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.compare .panel.bad h2 {
+  color: var(--sin-red);
+}
+.compare .panel.good h2 {
+  color: var(--good-green);
+}
+
+.prose {
+  max-width: 42rem;
+}
+.prose h2 {
+  margin-top: 2rem;
+  letter-spacing: -0.01em;
+}
+.prose code {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.9em;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}

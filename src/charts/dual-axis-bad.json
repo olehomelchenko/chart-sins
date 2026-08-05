@@ -1,0 +1,35 @@
+{
+  "title": "Ice Cream Sales vs. Shark Attacks",
+  "width": 360,
+  "height": 240,
+  "data": {
+    "values": [
+      { "month": "Jan", "icecream": 20, "sharks": 1 },
+      { "month": "Feb", "icecream": 24, "sharks": 1 },
+      { "month": "Mar", "icecream": 38, "sharks": 2 },
+      { "month": "Apr", "icecream": 55, "sharks": 3 },
+      { "month": "May", "icecream": 78, "sharks": 5 },
+      { "month": "Jun", "icecream": 95, "sharks": 6 },
+      { "month": "Jul", "icecream": 100, "sharks": 7 },
+      { "month": "Aug", "icecream": 96, "sharks": 6 }
+    ]
+  },
+  "encoding": {
+    "x": { "field": "month", "type": "ordinal", "sort": null, "axis": { "title": null, "labelAngle": 0 } }
+  },
+  "layer": [
+    {
+      "mark": { "type": "line", "color": "#c0392b", "point": true },
+      "encoding": {
+        "y": { "field": "icecream", "type": "quantitative", "title": "Ice cream sales", "axis": { "titleColor": "#c0392b" } }
+      }
+    },
+    {
+      "mark": { "type": "line", "color": "#2980b9", "point": true },
+      "encoding": {
+        "y": { "field": "sharks", "type": "quantitative", "title": "Shark attacks", "axis": { "titleColor": "#2980b9" } }
+      }
+    }
+  ],
+  "resolve": { "scale": { "y": "independent" } }
+}

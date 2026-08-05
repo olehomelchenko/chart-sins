@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { severityFlames } from '../lib/charts';
+import { href } from '../lib/url';
+
+const sins = (await getCollection('sins', ({ data }) => !data.draft)).sort((a, b) => {
+  // Most severe first; ties broken by newest date.
+  if (b.data.severity !== a.data.severity) return b.data.severity - a.data.severity;
+  return (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0);
+});
+---
+
+<BaseLayout title="Chart Sins">
+  <section class="wrap hero">
+    <h1>A catalogue of chart sins.</h1>
+    <p>
+      Every entry is a data-visualization mistake in the wild: the chart that
+      misleads, why it fools the eye, and the honest version that fixes it.
+    </p>
+  </section>
+
+  <section class="wrap">
+    <div class="gallery">
+      {
+        sins.map((sin) => (
+          <a class="card" href={href(`sins/${sin.id}/`)}>
+            <span class="pill">{sin.data.category}</span>
+            <h3>{sin.data.title}</h3>
+            <p>{sin.data.summary}</p>
+            <div class="meta">
+              <span class="severity" title={`Severity ${sin.data.severity} of 5`}>
+                {severityFlames(sin.data.severity)}
+              </span>
+              <span class="pill">Read →</span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

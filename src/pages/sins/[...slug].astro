@@ -1,0 +1,53 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VegaChart from '../../components/VegaChart.astro';
+import { getChartSpec, severityFlames } from '../../lib/charts';
+import { href } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const sins = await getCollection('sins', ({ data }) => !data.draft);
+  return sins.map((sin) => ({
+    params: { slug: sin.id },
+    props: { sin },
+  }));
+}
+
+const { sin } = Astro.props;
+const { Content } = await render(sin);
+
+const badSpec = getChartSpec(sin.data.badChart);
+const fixedSpec = getChartSpec(sin.data.fixedChart);
+---
+
+<BaseLayout title={`${sin.data.title} — Chart Sins`} description={sin.data.summary}>
+  <article class="wrap sin">
+    <header>
+      <span class="pill">{sin.data.category}</span>
+      <h1>{sin.data.title}</h1>
+      <span class="severity" title={`Severity ${sin.data.severity} of 5`}>
+        {severityFlames(sin.data.severity)}
+      </span>
+      <div class="tags">
+        {sin.data.tags.map((t) => <span class="pill">{t}</span>)}
+      </div>
+    </header>
+
+    <div class="compare">
+      <div class="panel bad">
+        <h2>The Sin</h2>
+        <VegaChart spec={badSpec} title={`Misleading chart: ${sin.data.title}`} />
+      </div>
+      <div class="panel good">
+        <h2>The Fix</h2>
+        <VegaChart spec={fixedSpec} title={`Honest chart: ${sin.data.title}`} />
+      </div>
+    </div>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <a class="back-link" href={href()}>← All sins</a>
+  </article>
+</BaseLayout>

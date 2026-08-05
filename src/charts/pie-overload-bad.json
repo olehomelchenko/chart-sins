@@ -1,0 +1,22 @@
+{
+  "title": "Market Share by Browser (%)",
+  "width": 300,
+  "height": 260,
+  "data": {
+    "values": [
+      { "browser": "Chrome", "share": 63 },
+      { "browser": "Safari", "share": 20 },
+      { "browser": "Edge", "share": 5 },
+      { "browser": "Firefox", "share": 3 },
+      { "browser": "Samsung", "share": 3 },
+      { "browser": "Opera", "share": 2 },
+      { "browser": "UC", "share": 2 },
+      { "browser": "Other", "share": 2 }
+    ]
+  },
+  "mark": { "type": "arc" },
+  "encoding": {
+    "theta": { "field": "share", "type": "quantitative" },
+    "color": { "field": "browser", "type": "nominal", "legend": { "title": "Browser" } }
+  }
+}

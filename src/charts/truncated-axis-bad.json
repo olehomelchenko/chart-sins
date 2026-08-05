@@ -1,0 +1,30 @@
+{
+  "title": "Monthly Revenue ($M)",
+  "width": 340,
+  "height": 240,
+  "data": {
+    "values": [
+      { "month": "Jan", "revenue": 92 },
+      { "month": "Feb", "revenue": 94 },
+      { "month": "Mar", "revenue": 93 },
+      { "month": "Apr", "revenue": 96 },
+      { "month": "May", "revenue": 95 },
+      { "month": "Jun", "revenue": 98 }
+    ]
+  },
+  "mark": { "type": "bar", "color": "#c0392b" },
+  "encoding": {
+    "x": {
+      "field": "month",
+      "type": "nominal",
+      "sort": null,
+      "axis": { "labelAngle": 0, "title": null }
+    },
+    "y": {
+      "field": "revenue",
+      "type": "quantitative",
+      "scale": { "domain": [90, 100] },
+      "title": "Revenue ($M)"
+    }
+  }
+}
