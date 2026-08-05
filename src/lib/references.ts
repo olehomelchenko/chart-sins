@@ -89,7 +89,7 @@ export const REFERENCES = {
     year: 2007,
     url: 'https://www.perceptualedge.com/articles/visual_business_intelligence/save_the_pies_for_dessert.pdf',
     kind: 'paper',
-    blurb: 'The definitive takedown of the pie chart, from the field’s most stubborn advocate for clarity.',
+    blurb: 'The best-known case against the pie chart, argued at length by the field’s most stubborn advocate for clarity.',
     free: true,
   },
   wilke: {
@@ -200,7 +200,7 @@ export const REFERENCES = {
     work: 'tylervigen.com',
     url: 'https://www.tylervigen.com/spurious-correlations',
     kind: 'site',
-    blurb: 'Thousands of nonsense correlations — the canonical proof that “they move together” proves nothing.',
+    blurb: 'Thousands of nonsense correlations — the definitive proof that “they move together” proves nothing.',
     free: true,
   },
   eagereyes: {

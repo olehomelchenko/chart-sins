@@ -24,6 +24,19 @@ Each sin page follows one shape: **poke → proof → why → the fix → receip
   "Your bars don't start at zero…", not the numbers from our example data.
 - **Tone: cheeky, not moralizing.** "Caught — here are the receipts," not
   "repent." Poke the mistake, keep it light.
+- **We condemn uses, not chart types.** There is no banned form here. A pie
+  chart showing three parts of a whole is doing its job; a second y-axis
+  carrying °C against °F is fine. The sin is always a *use* — the workload the
+  form can't carry, the alignment you picked yourself, the baseline you moved.
+  Say so on the page when the form has honest uses, so nobody reads us as
+  "pie charts are always wrong." Blanket bans are how dataviz advice turns into
+  folklore, and folklore is what we're trying to replace with citations.
+- **Severity means something.** Keep it consistent:
+  **5** — reverses or fabricates meaning; no honest reading of the chart exists.
+  **4** — actively misleads about magnitude or relationship, but the underlying
+  form has legitimate uses. **3** — a sound form asked to do a job it can't; the
+  reader can't extract what the chart claims to show. **2** — craft failure:
+  nothing false, but the reader is made to work for no reason.
 - **Same numbers, both charts.** The bad and fixed charts must share one dataset
   so the page *proves* dishonest-vs-honest by construction. Charts are authored
   as Vega-Lite specs and rendered at build time — never screenshots.

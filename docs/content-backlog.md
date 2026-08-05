@@ -27,28 +27,28 @@ seven sources, give it seven and add whatever's missing to the file.
 
 | Reference | Cited by |
 | --- | --- |
-| `munzner` | — |
-| `healy` | — |
-| `schwabish` | — |
 | `ftvisvocab` | — |
-| `tufte` | truncated-y-axis |
-| `huff` | truncated-y-axis |
-| `swd` | two-y-axes |
-| `spurious` | two-y-axes |
-| `datawrapper` | two-y-axes |
+| `healy` | — |
+| `munzner` | — |
+| `schwabish` | — |
+| `datawrapper` | dual-axis-correlation |
 | `fewpies` | too-many-pie-slices |
-| `showmenumbers` | too-many-pie-slices |
+| `huff` | truncated-y-axis |
 | `shapeparameter` | aspect-ratio |
+| `showmenumbers` | too-many-pie-slices |
+| `spurious` | dual-axis-correlation |
+| `swd` | dual-axis-correlation |
+| `tufte` | truncated-y-axis |
 | `vizwtf` | inverted-y-axis |
-| `wilke` | too-many-pie-slices, truncated-y-axis |
-| `truthfulart` | aspect-ratio, two-y-axes |
 | `callingbullshit` | inverted-y-axis, truncated-y-axis |
-| `economistmistakes` | inverted-y-axis, truncated-y-axis |
-| `datatoviz` | too-many-pie-slices, two-y-axes |
-| `junkcharts` | inverted-y-axis, too-many-pie-slices |
+| `datatoviz` | dual-axis-correlation, too-many-pie-slices |
 | `eagereyes` | aspect-ratio, too-many-pie-slices |
+| `economistmistakes` | inverted-y-axis, truncated-y-axis |
+| `junkcharts` | inverted-y-axis, too-many-pie-slices |
+| `truthfulart` | aspect-ratio, dual-axis-correlation |
+| `wilke` | too-many-pie-slices, truncated-y-axis |
 | `clevelandmcgill` | aspect-ratio, too-many-pie-slices, truncated-y-axis |
-| `howchartslie` | aspect-ratio, inverted-y-axis, truncated-y-axis, two-y-axes |
+| `howchartslie` | aspect-ratio, dual-axis-correlation, inverted-y-axis, truncated-y-axis |
 
 The citation lists in each entry below are **starting points, not budgets** —
 add to them while drafting.
@@ -197,6 +197,13 @@ rediscovering them:
   is ready to write.
 
 ## Conventions reminder
+
+Note what the two pie entries above do and don't say. Neither condemns the pie
+chart — both condemn feeding one data that has no whole to divide. Same for a
+second y-axis: the form is fine, the manufactured correlation is not. We don't
+ban chart types here, and a backlog entry that reads like a blanket ban has been
+written wrong. See the severity rubric in `CLAUDE.md` — a form with legitimate
+uses caps out at 4.
 
 Anything picked up from this list still follows `CLAUDE.md`: the title names the
 problem plainly and leaves the wit to the poke, the poke names the general sin

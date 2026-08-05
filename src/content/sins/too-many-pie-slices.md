@@ -20,17 +20,23 @@ citations:
   - key: wilke
     note: "His chapter on proportions puts the same data in a pie, a stacked bar and side-by-side bars, so you can see what each one costs you."
   - key: eagereyes
-    note: "Kosara has actually run the experiments, and complicates the blanket condemnation — read him before swearing off pies entirely."
+    note: "Kosara has actually run the experiments, and they don't support treating the pie as broken by nature — useful if someone tells you the chart type itself is the problem."
   - key: showmenumbers
     note: "Few’s full design manual, for when the short broadside isn’t enough to win the argument."
 ---
 
 ## The sin
 
-The pie chart asks the reader to compare **angles** — something people are
-genuinely bad at. One or two slices, fine. But eight slices, several of them
-within a percentage point of each other? Nobody can tell whether Firefox beats
-Samsung by eyeballing two thin wedges on opposite sides of the circle.
+A pie chart does one job, and does it well: showing that a handful of parts make
+up a whole — this slice is about half, that one about a quarter. Nothing else
+communicates "most of it" quite as fast.
+
+Eight slices, several within a percentage point of each other, is not that job.
+Nobody can tell whether Firefox beats Samsung by eyeballing two thin wedges on
+opposite sides of the circle.
+
+**The chart type isn't the sin here — the workload is.** Pies are not banned
+around here; this one was just asked to answer a question it can't answer.
 
 ## Why it deceives
 
@@ -39,9 +45,18 @@ circle can't be lined up against a common baseline. The small categories blur
 into an indistinguishable fringe, and the ranking — usually the whole point —
 becomes guesswork.
 
+Worse, the reader doesn't feel like they're guessing. The chart looks exact, so
+a rank read off it gets quoted with a confidence nothing on the page earns.
+
 ## The repentance
 
-Use a **sorted horizontal bar chart**. Every value shares one baseline, the
-ordering is explicit, and long labels sit comfortably beside their bars. Reserve
-the pie for the rare case of two or three parts of an obvious whole — and even
-then, a bar chart rarely does worse.
+Match the form to the question you're actually asking.
+
+If the point is "these few parts make up the whole," a pie with two or three
+slices says it instantly, and you should keep it. If the point is a **ranking**
+— which is what an eight-category breakdown nearly always is — use a sorted
+horizontal bar chart: one shared baseline, explicit order, and room for long
+labels beside their bars.
+
+If you need the whole *and* the ranking, a sorted bar chart with the total
+stated in the title does both.
