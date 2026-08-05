@@ -126,12 +126,23 @@ Each sin page follows one shape: **poke → proof → why → the fix → receip
 - GitHub Pages via `.github/workflows/deploy.yml`, triggered on push to `main`
   (plus `workflow_dispatch`). Project path is configured in `astro.config.mjs`
   (`site` + `base` → `/chart-sins`).
-- **Known gotcha — the default branch.** The repo's default branch is currently
-  the feature branch (it was the first branch pushed into the empty repo). The
-  auto-created `github-pages` environment only allows deploys from the **default
-  branch**, so a push to `main` builds but the *deploy* job is rejected. Until
-  this is fixed we deploy by **dispatching the workflow on the default branch**.
-  **Fix:** set the default branch to `main` (Settings → General); then plain
-  pushes to `main` deploy normally and this note can go away.
+- **Known gotcha — the `github-pages` environment's branch allow-list.** The
+  build job goes green and the *deploy* job fails with **zero steps** and this
+  annotation:
+  `Branch "main" is not allowed to deploy to github-pages due to environment
+  protection rules.`
+  When GitHub auto-creates the `github-pages` environment it pins a deployment
+  branch allow-list to whatever branch was default *at that moment* — here, the
+  feature branch that was pushed into the empty repo first. Changing the repo's
+  default branch later does **not** rewrite that list; we tried on 2026-08-05
+  and the deploy failed again, identically.
+  **Fix:** Settings → Environments → `github-pages` → *Deployment branches and
+  tags* → add `main` (or drop the restriction). Nothing in the workflow file or
+  the default-branch setting can work around it.
+- A zero-step deploy failure is always this: a protection rule refusing the job
+  before it runs, never a build problem. Read the check-run annotation rather
+  than the logs — a rejected job has no logs.
+- The environments API is blocked by the agent proxy, so an agent can neither
+  read nor fix this. It has to be a human in repo settings.
 - Pages had to be **enabled manually** once (Settings → Pages → Source: GitHub
   Actions) — the Actions token can't create the Pages site itself.
