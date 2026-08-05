@@ -17,7 +17,7 @@ runs 2–5 on purpose.
 
 ## Sources in play
 
-`src/lib/references.ts` currently holds 24 entries, 21 of them cited by the 6
+`src/lib/references.ts` currently holds 24 entries, 22 of them cited by the 8
 published sins. This table is a **convenience, not a scoreboard** — it's here so
 you can spot a source that fits a sin you're drafting, not so we can drive the
 right-hand column to zero blanks. An uncited reference is not a debt.
@@ -29,28 +29,28 @@ seven sources, give it seven and add whatever's missing to the file.
 | --- | --- |
 | `ftvisvocab` | — |
 | `healy` | — |
-| `schwabish` | — |
 | `fewdualaxes` | dual-axis-correlation |
 | `huff` | truncated-y-axis |
 | `isenberg2011` | dual-axis-correlation |
-| `munzner` | incomplete-pie |
+| `schwabish` | category-colors |
 | `shapeparameter` | aspect-ratio |
 | `showmenumbers` | too-many-pie-slices |
 | `spurious` | dual-axis-correlation |
-| `swd` | dual-axis-correlation |
 | `tufte` | truncated-y-axis |
-| `callingbullshit` | inverted-y-axis, truncated-y-axis |
 | `eagereyes` | aspect-ratio, too-many-pie-slices |
 | `fewpies` | incomplete-pie, too-many-pie-slices |
 | `junkcharts` | inverted-y-axis, too-many-pie-slices |
+| `swd` | category-colors, dual-axis-correlation |
 | `truthfulart` | aspect-ratio, dual-axis-correlation |
-| `vizwtf` | incomplete-pie, inverted-y-axis |
 | `wilke` | too-many-pie-slices, truncated-y-axis |
+| `callingbullshit` | inverted-y-axis, rebinned-colour-scale, truncated-y-axis |
 | `clevelandmcgill` | aspect-ratio, too-many-pie-slices, truncated-y-axis |
 | `datatoviz` | dual-axis-correlation, incomplete-pie, too-many-pie-slices |
-| `datawrapper` | dual-axis-correlation, incomplete-pie, too-many-pie-slices |
 | `economistmistakes` | dual-axis-correlation, inverted-y-axis, truncated-y-axis |
-| `howchartslie` | aspect-ratio, dual-axis-correlation, inverted-y-axis, truncated-y-axis |
+| `munzner` | category-colors, incomplete-pie, rebinned-colour-scale |
+| `vizwtf` | category-colors, incomplete-pie, inverted-y-axis, rebinned-colour-scale |
+| `datawrapper` | category-colors, dual-axis-correlation, incomplete-pie, rebinned-colour-scale, too-many-pie-slices |
+| `howchartslie` | aspect-ratio, dual-axis-correlation, inverted-y-axis, rebinned-colour-scale, truncated-y-axis |
 
 The citation lists in each entry below are **starting points, not budgets** —
 add to them while drafting.
@@ -236,6 +236,12 @@ rediscovering them:
   both themes. Don't draft this one until a real source is in hand.
 
 ## Two new levers, as of the first wild specimen
+
+Three specimens are live so far (`incomplete-pie`, `category-colors`,
+`rebinned-colour-scale`), all collected from WTF Visualizations. Each one
+arrived before its sin existed, which is turning out to be the healthier order:
+a real chart in hand makes the failure mode obvious and stops us inventing sins
+nobody commits.
 
 - **`wild`** — real examples, credited and linked, rendered above the citations.
   Zero, one or many per sin. A specimen that commits two sins belongs on both

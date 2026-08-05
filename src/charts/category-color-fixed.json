@@ -1,0 +1,36 @@
+{
+  "title": "Cars Sold by Colour",
+  "width": 340,
+  "height": 220,
+  "data": {
+    "values": [
+      { "colour": "White", "sold": 34 },
+      { "colour": "Black", "sold": 27 },
+      { "colour": "Grey", "sold": 18 },
+      { "colour": "Blue", "sold": 9 },
+      { "colour": "Red", "sold": 7 },
+      { "colour": "Green", "sold": 3 },
+      { "colour": "Yellow", "sold": 2 }
+    ]
+  },
+  "mark": { "type": "bar", "stroke": "#8d8d8d", "strokeWidth": 0.6 },
+  "encoding": {
+    "x": {
+      "field": "colour",
+      "type": "nominal",
+      "sort": null,
+      "axis": { "labelAngle": 0, "title": null }
+    },
+    "y": { "field": "sold", "type": "quantitative", "scale": { "zero": true }, "title": "Cars sold" },
+    "color": {
+      "field": "colour",
+      "type": "nominal",
+      "sort": null,
+      "scale": {
+        "domain": ["White", "Black", "Grey", "Blue", "Red", "Green", "Yellow"],
+        "range": ["#ffffff", "#161616", "#8d8d8d", "#0f62fe", "#da1e28", "#198038", "#f1c21b"]
+      },
+      "legend": null
+    }
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "title": "7-Day Incidence by District",
+  "data": {
+    "values": [
+      {
+        "district": "A",
+        "row": "7-day incidence",
+        "when": "17 March",
+        "value": 22
+      },
+      {
+        "district": "B",
+        "row": "7-day incidence",
+        "when": "17 March",
+        "value": 38
+      },
+      {
+        "district": "C",
+        "row": "7-day incidence",
+        "when": "17 March",
+        "value": 45
+      },
+      {
+        "district": "D",
+        "row": "7-day incidence",
+        "when": "17 March",
+        "value": 60
+      },
+      {
+        "district": "E",
+        "row": "7-day incidence",
+        "when": "17 March",
+        "value": 85
+      },
+      {
+        "district": "F",
+        "row": "7-day incidence",
+        "when": "17 March",
+        "value": 110
+      },
+      {
+        "district": "G",
+        "row": "7-day incidence",
+        "when": "17 March",
+        "value": 140
+      },
+      {
+        "district": "H",
+        "row": "7-day incidence",
+        "when": "17 March",
+        "value": 190
+      },
+      {
+        "district": "A",
+        "row": "7-day incidence",
+        "when": "9 April",
+        "value": 45
+      },
+      {
+        "district": "B",
+        "row": "7-day incidence",
+        "when": "9 April",
+        "value": 70
+      },
+      {
+        "district": "C",
+        "row": "7-day incidence",
+        "when": "9 April",
+        "value": 88
+      },
+      {
+        "district": "D",
+        "row": "7-day incidence",
+        "when": "9 April",
+        "value": 120
+      },
+      {
+        "district": "E",
+        "row": "7-day incidence",
+        "when": "9 April",
+        "value": 150
+      },
+      {
+        "district": "F",
+        "row": "7-day incidence",
+        "when": "9 April",
+        "value": 175
+      },
+      {
+        "district": "G",
+        "row": "7-day incidence",
+        "when": "9 April",
+        "value": 210
+      },
+      {
+        "district": "H",
+        "row": "7-day incidence",
+        "when": "9 April",
+        "value": 260
+      }
+    ]
+  },
+  "hconcat": [
+    {
+      "title": "17 March",
+      "width": 190,
+      "height": 46,
+      "transform": [
+        {
+          "filter": "datum.when === '17 March'"
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "stroke": "#e0e0e0",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "x": {
+          "field": "district",
+          "type": "nominal",
+          "sort": null,
+          "axis": {
+            "labelAngle": 0,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "row",
+          "type": "nominal",
+          "axis": {
+            "title": null,
+            "labels": false,
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "color": {
+          "field": "value",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [
+              25,
+              50,
+              100,
+              250
+            ],
+            "range": [
+              "#fff1f1",
+              "#ffb3b8",
+              "#fa4d56",
+              "#da1e28",
+              "#750e13"
+            ]
+          },
+          "legend": {
+            "title": "cases / 100k",
+            "orient": "bottom",
+            "direction": "horizontal"
+          }
+        }
+      }
+    },
+    {
+      "title": "9 April",
+      "width": 190,
+      "height": 46,
+      "transform": [
+        {
+          "filter": "datum.when === '9 April'"
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "stroke": "#e0e0e0",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "x": {
+          "field": "district",
+          "type": "nominal",
+          "sort": null,
+          "axis": {
+            "labelAngle": 0,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "row",
+          "type": "nominal",
+          "axis": {
+            "title": null,
+            "labels": false,
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "color": {
+          "field": "value",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [
+              25,
+              50,
+              100,
+              250
+            ],
+            "range": [
+              "#fff1f1",
+              "#ffb3b8",
+              "#fa4d56",
+              "#da1e28",
+              "#750e13"
+            ]
+          },
+          "legend": null
+        }
+      }
+    }
+  ],
+  "resolve": {
+    "scale": {
+      "color": "shared"
+    }
+  }
+}
