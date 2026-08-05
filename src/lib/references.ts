@@ -135,6 +135,15 @@ export const REFERENCES = {
     blurb: 'A browsable catalogue of common dataviz mistakes, each with a fix.',
     free: true,
   },
+  datawrapper: {
+    authors: 'Lisa Charlotte Muth & the Datawrapper team',
+    title: 'Datawrapper Blog — Data Vis Do’s & Don’ts',
+    work: 'blog.datawrapper.de',
+    url: 'https://blog.datawrapper.de/category/datavis-dos-and-donts/',
+    kind: 'site',
+    blurb: 'Chart-type-by-chart-type “what to consider” posts, and the clearest free writing anywhere on choosing color scales.',
+    free: true,
+  },
   junkcharts: {
     authors: 'Kaiser Fung',
     title: 'Junk Charts',

@@ -26,8 +26,9 @@ Which references are already doing work, after the first three sins:
 | **`huff`** | — |
 | **`schwabish`** | — |
 | **`ftvisvocab`** | — |
+| **`datawrapper`** | — |
 
-Six idle references. Each is an authority we've already endorsed on the canon
+Seven idle references. Each is an authority we've already endorsed on the canon
 page, so a sin that leans on one is cheap to justify and strengthens the page it
 sits on. The backlog is ordered to bring them all in.
 
@@ -95,7 +96,28 @@ sorted by value.
 
 **Citations:** `schwabish`, `ftvisvocab`, `swd`, `fewpies`.
 
-### 5. The Reversed Axis — *Misleading Scales*, severity 5
+### 5. Everything Above the Bottom Floats — *Perceptual Traps*, severity 3
+
+**Poke:** "Only the bottom band of a stacked chart has a straight edge to
+measure against. The rest are guesses."
+
+In a stacked column chart, every segment except the bottom one starts at a
+baseline that moves from column to column, so readers can compare the total and
+the bottom series — and nothing else. The series you actually care about is
+usually floating somewhere in the middle. Datawrapper's guidance is blunt about
+it: bring the most important value to the bottom, because readers can only
+compare values that share a baseline.
+
+Ubiquitous in business dashboards and highly sendable, which is why it outranks
+the two below despite a milder severity.
+
+**Charts:** bad = stacked columns with the interesting series stranded in the
+middle. Fixed = the same numbers as small multiples (or the key series pulled
+out to its own zero baseline), totals preserved.
+
+**Citations:** `datawrapper`, `wilke`, `munzner`, `ftvisvocab`.
+
+### 6. The Reversed Axis — *Misleading Scales*, severity 5
 
 **Poke:** "Down means up. You flipped the axis and the trend flipped with it."
 
@@ -105,7 +127,7 @@ support overlaps almost entirely with sins we've already published.
 
 **Citations:** `callingbullshit`, `howchartslie`, `junkcharts`.
 
-### 6. Squashed and Stretched — *Misleading Scales*, severity 3
+### 7. Squashed and Stretched — *Misleading Scales*, severity 3
 
 **Poke:** "Same data, twice as tall. Aspect ratio is not a styling choice."
 
@@ -127,10 +149,12 @@ rediscovering them:
 - **Counts on a choropleth instead of rates** (Cairo's set-piece) — needs
   TopoJSON geometry and a build-time data dependency we don't have yet. Strong
   candidate the moment we take that on.
-- **Rainbow color scales for continuous data** (Wilke, Munzner) — buildable, but
-  the fixed chart needs a sequential ramp validated on `--chart-canvas` in both
-  themes. Do the palette work first (`dataviz` skill + its validator), then
-  write it.
+- **Rainbow color scales for continuous data** (Wilke, Munzner, and now
+  Datawrapper's four-part color-scale series — the best free treatment of this
+  anywhere) — the canon backing is no longer the constraint. What still blocks
+  it is ours: the fixed chart needs a sequential ramp validated on
+  `--chart-canvas` in both themes. Do the palette work first (`dataviz` skill +
+  its validator), then this is ready to write.
 
 ## Conventions reminder
 
