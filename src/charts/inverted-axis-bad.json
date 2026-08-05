@@ -1,0 +1,37 @@
+{
+  "title": "Reported Safety Incidents per Year",
+  "width": 340,
+  "height": 240,
+  "data": {
+    "values": [
+      { "year": "2017", "incidents": 41 },
+      { "year": "2018", "incidents": 45 },
+      { "year": "2019", "incidents": 52 },
+      { "year": "2020", "incidents": 58 },
+      { "year": "2021", "incidents": 64 },
+      { "year": "2022", "incidents": 71 },
+      { "year": "2023", "incidents": 76 },
+      { "year": "2024", "incidents": 83 }
+    ]
+  },
+  "mark": {
+    "type": "area",
+    "color": "#da1e28",
+    "opacity": 0.9,
+    "line": { "color": "#da1e28", "strokeWidth": 2 }
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "sort": null,
+      "axis": { "labelAngle": 0, "title": null }
+    },
+    "y": {
+      "field": "incidents",
+      "type": "quantitative",
+      "scale": { "zero": true, "reverse": true },
+      "title": "Incidents"
+    }
+  }
+}

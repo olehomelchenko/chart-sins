@@ -1,0 +1,36 @@
+{
+  "title": "Median Response Time (ms)",
+  "width": 330,
+  "height": 200,
+  "data": {
+    "values": [
+      { "month": "Jan", "ms": 182 },
+      { "month": "Feb", "ms": 190 },
+      { "month": "Mar", "ms": 196 },
+      { "month": "Apr", "ms": 205 },
+      { "month": "May", "ms": 212 },
+      { "month": "Jun", "ms": 219 },
+      { "month": "Jul", "ms": 228 },
+      { "month": "Aug", "ms": 234 },
+      { "month": "Sep", "ms": 241 },
+      { "month": "Oct", "ms": 250 },
+      { "month": "Nov", "ms": 259 },
+      { "month": "Dec", "ms": 268 }
+    ]
+  },
+  "mark": { "type": "line", "color": "#198038", "strokeWidth": 2, "point": { "color": "#198038" } },
+  "encoding": {
+    "x": {
+      "field": "month",
+      "type": "ordinal",
+      "sort": null,
+      "axis": { "labelAngle": 0, "title": null, "values": ["Jan", "Apr", "Jul", "Oct"] }
+    },
+    "y": {
+      "field": "ms",
+      "type": "quantitative",
+      "scale": { "domain": [170, 280], "zero": false },
+      "title": "ms"
+    }
+  }
+}

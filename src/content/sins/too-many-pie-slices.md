@@ -1,6 +1,6 @@
 ---
 title: "Too Many Slices in a Pie Chart"
-summary: "Eight near-identical slices no human eye can rank. A bar chart was right there."
+summary: "Near-identical wedges nobody can rank by eye, when a sorted bar chart would have answered instantly."
 poke: "More slices than anyone can rank by eye. A bar chart was right there."
 category: "Chart-Type Abuse"
 severity: 3

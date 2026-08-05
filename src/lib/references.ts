@@ -115,6 +115,14 @@ export const REFERENCES = {
     kind: 'paper',
     blurb: 'The experiments proving people judge position accurately and angle/area poorly — the root of most of these sins.',
   },
+  shapeparameter: {
+    authors: 'William S. Cleveland, Marylyn E. McGill & Robert McGill',
+    title: 'The Shape Parameter of a Two-Variable Graph',
+    work: 'Journal of the American Statistical Association',
+    year: 1988,
+    kind: 'paper',
+    blurb: 'Made aspect ratio measurable: the width-to-height ratio changes how slopes are judged, and “bank to 45°” came from it.',
+  },
   schwabish: {
     authors: 'Jonathan Schwabish',
     title: 'Better Data Visualizations',

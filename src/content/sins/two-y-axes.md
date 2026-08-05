@@ -1,7 +1,7 @@
 ---
-title: "Two Y-Axes Scaled to Look Correlated"
-summary: "Two unrelated series on two independent axes, engineered to look correlated."
-poke: "Two y-axes, scaled until the lines overlap — and suddenly anything 'causes' anything."
+title: "Two Y-Axes on One Chart"
+summary: "Two unrelated series, each handed its own scale, until the lines trace the same suggestive path."
+poke: "Two scales, tuned until the lines overlap — and suddenly anything 'causes' anything."
 category: "False Relationships"
 severity: 5
 tags: ["dual axis", "correlation", "line chart"]

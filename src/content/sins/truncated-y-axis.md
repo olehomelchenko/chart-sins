@@ -1,6 +1,6 @@
 ---
 title: "Truncated Y-Axis on a Bar Chart"
-summary: "Chopping the baseline off a bar chart to make small differences look enormous."
+summary: "A few points of difference, redrawn until they tower over the page."
 poke: "Your bars don't start at zero. That's not a bar chart — it's a magic trick."
 category: "Misleading Scales"
 severity: 4
