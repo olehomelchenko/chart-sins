@@ -37,6 +37,8 @@ Two standing rules for step 3:
 | 11 | Robert Kosara, *Understanding Pie Charts* (eagereyes) | URL, and what his experiments actually found. We lean on this to justify not condemning pie charts outright (claim V7). |
 | 12 | The Economist, "Mistakes, we've drawn a few" | **Canonical URL only** — the content arrived and is settled below, but `economistmistakes` still ships without a link. |
 
+| 13 | `viz.wtf/post/664318320965795840/primary-election-result` | The post's caption and date. viz.wtf 403s automated fetches, so the specimen on `incomplete-pie` is credited from the logos legible in the image itself (Demokratikus Koalíció / Dobrev Klára) rather than from the post. The arithmetic and the measured arc angles are ours and don't depend on it. |
+
 ## Claims to verify
 
 Live on the site, resting on recall rather than a source anyone opened.

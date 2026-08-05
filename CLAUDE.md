@@ -88,6 +88,14 @@ Each sin page follows one shape: **poke → proof → why → the fix → receip
    `badChart`/`fixedChart` are the spec basenames (no `.json`). `citations[].key`
    must exist in `src/lib/references.ts` (build throws otherwise).
 3. New reference? Add it once to `src/lib/references.ts`, then cite its key.
+   Optional frontmatter worth knowing about:
+   - `wild[]` — real specimens of the sin, rendered above the citations. Always
+     `credit` the original and link `sourceUrl` where we found it. A chart that
+     commits two sins goes on both pages with a different `note` on each.
+   - `related[]` — slugs of neighbouring sins; validated at build, so a typo or
+     a renamed slug fails the build rather than shipping a dead link.
+   - `compareNote` — overrides "Same numbers, both charts," which is wrong on a
+     sin whose whole point is an omission.
 4. `npm run dev` and check. The OG card for the sin is generated automatically.
 
 ## Design & rendering

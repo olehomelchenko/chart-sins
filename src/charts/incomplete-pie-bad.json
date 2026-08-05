@@ -1,0 +1,24 @@
+{
+  "title": "Vote Share by Candidate (%)",
+  "width": 300,
+  "height": 260,
+  "data": {
+    "values": [
+      { "candidate": "Alvarez", "share": 38 },
+      { "candidate": "Boone", "share": 22 },
+      { "candidate": "Chen", "share": 19 },
+      { "candidate": "Everyone else", "share": 21 }
+    ]
+  },
+  "transform": [{ "filter": "datum.candidate !== 'Everyone else'" }],
+  "mark": { "type": "arc" },
+  "encoding": {
+    "theta": { "field": "share", "type": "quantitative" },
+    "color": {
+      "field": "candidate",
+      "type": "nominal",
+      "sort": ["Alvarez", "Boone", "Chen", "Everyone else"],
+      "legend": { "title": "Candidate" }
+    }
+  }
+}

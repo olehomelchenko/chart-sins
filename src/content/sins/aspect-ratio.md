@@ -8,6 +8,9 @@ tags: ["line chart", "aspect ratio", "exaggeration"]
 badChart: "aspect-ratio-bad"
 fixedChart: "aspect-ratio-fixed"
 date: 2026-08-05
+related:
+  - truncated-y-axis
+  - dual-axis-correlation
 citations:
   - key: shapeparameter
     note: "The paper that made this measurable: a graph's width-to-height ratio changes how slopes are judged, and gave us “bank the average slope toward 45°.”"

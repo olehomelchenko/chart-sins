@@ -8,6 +8,9 @@ tags: ["bar chart", "axis", "exaggeration"]
 badChart: "truncated-axis-bad"
 fixedChart: "truncated-axis-fixed"
 date: 2026-08-05
+related:
+  - aspect-ratio
+  - inverted-y-axis
 citations:
   - key: callingbullshit
     note: "Their “Misleading Axes” module is the standard explainer for exactly this move."

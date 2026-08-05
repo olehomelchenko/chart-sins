@@ -2,6 +2,8 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VegaChart from '../../components/VegaChart.astro';
+import WildExamples from '../../components/WildExamples.astro';
+import RelatedSins from '../../components/RelatedSins.astro';
 import Citations from '../../components/Citations.astro';
 import ShareLink from '../../components/ShareLink.astro';
 import { getChartSpec, severityUnits, tagModifier } from '../../lib/charts';
@@ -11,11 +13,23 @@ export async function getStaticPaths() {
   const sins = await getCollection('sins', ({ data }) => !data.draft);
   return sins.map((sin) => ({
     params: { slug: sin.id },
-    props: { sin },
+    props: { sin, all: sins },
   }));
 }
 
-const { sin } = Astro.props;
+const { sin, all } = Astro.props;
+
+// Resolve `related` slugs against the collection, failing the build on a typo
+// or a slug that was renamed out from under us.
+const related = sin.data.related.map((slug) => {
+  const target = all.find((s) => s.id === slug);
+  if (!target) {
+    throw new Error(
+      `Sin "${sin.id}" lists related sin "${slug}", which doesn't exist. Known: ${all.map((s) => s.id).join(', ')}`,
+    );
+  }
+  return target;
+});
 const { Content } = await render(sin);
 
 const badSpec = getChartSpec(sin.data.badChart);
@@ -59,13 +73,17 @@ const ogImage = new URL(href(`og/${sin.id}.png`), Astro.site).toString();
         <VegaChart spec={fixedSpec} title={`Honest chart: ${sin.data.title}`} />
       </div>
     </div>
-    <p class="compare__note">Same numbers, both charts. Only the design changed.</p>
+    <p class="compare__note">{sin.data.compareNote ?? 'Same numbers, both charts. Only the design changed.'}</p>
 
     <div class="prose">
       <Content />
     </div>
 
+    <WildExamples examples={sin.data.wild} />
+
     <Citations citations={sin.data.citations} />
+
+    <RelatedSins sins={related} />
 
     <ShareLink url={pageUrl} />
 

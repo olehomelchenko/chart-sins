@@ -27,6 +27,29 @@ const sins = defineCollection({
     // Basenames of Vega-Lite specs in src/charts/ (without .json).
     badChart: z.string(),
     fixedChart: z.string(),
+    // Overrides the line under the before/after pair. Default asserts the two
+    // charts share one dataset; set it when the sin *is* an omission and that
+    // wording would be wrong.
+    compareNote: z.string().optional(),
+    // Real specimens of this sin, published by someone else and found in the
+    // wild. Zero, one or many. Rendered above the citations. Always credit the
+    // original and link where it was collected when we can.
+    wild: z
+      .array(
+        z.object({
+          caption: z.string(),
+          note: z.string(),
+          image: z.string().optional(),
+          alt: z.string().optional(),
+          credit: z.string(),
+          sourceUrl: z.string().optional(),
+          sourceLabel: z.string().optional(),
+        }),
+      )
+      .default([]),
+    // Slugs of other sins worth reading next — a chart usually commits more
+    // than one. Validated at build; an unknown slug throws.
+    related: z.array(z.string()).default([]),
     // Optional publish date; unset entries sort last.
     date: z.coerce.date().optional(),
     draft: z.boolean().default(false),

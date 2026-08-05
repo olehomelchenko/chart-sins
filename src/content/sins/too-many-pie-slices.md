@@ -8,6 +8,8 @@ tags: ["pie chart", "part-to-whole", "comparison"]
 badChart: "pie-overload-bad"
 fixedChart: "pie-overload-fixed"
 date: 2026-08-05
+related:
+  - incomplete-pie
 citations:
   - key: fewpies
     note: "“Save the Pies for Dessert” — the definitive, free takedown of the overloaded pie."

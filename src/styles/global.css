@@ -675,6 +675,116 @@ a.receipt__work {
   font-size: 0.875rem;
 }
 
+/* often found together — cross-links between sins */
+.related {
+  margin-top: var(--spacing-09);
+  padding-top: var(--spacing-07);
+  border-top: 1px solid var(--border-subtle);
+}
+.related__title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0 0 var(--spacing-05);
+  letter-spacing: -0.01em;
+}
+.related__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+}
+.related__item {
+  background: var(--layer-01);
+  padding: var(--spacing-05) var(--spacing-06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-05);
+}
+.related__link {
+  text-decoration: none;
+  display: grid;
+  gap: var(--spacing-02);
+}
+.related__name {
+  font-weight: 600;
+  color: var(--link-primary);
+}
+.related__link:hover .related__name {
+  text-decoration: underline;
+}
+.related__summary {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+.related__sev {
+  display: inline-flex;
+  gap: 3px;
+  flex: none;
+}
+.related__unit {
+  width: 6px;
+  height: 14px;
+  background: var(--border-subtle);
+}
+.related__unit--on {
+  background: var(--support-error);
+}
+
+/* caught in the wild — real specimens */
+.wild {
+  margin-top: var(--spacing-09);
+  padding-top: var(--spacing-07);
+  border-top: 1px solid var(--border-subtle);
+}
+.wild__title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.wild__lede {
+  color: var(--text-secondary);
+  margin: var(--spacing-03) 0 var(--spacing-06);
+}
+.wild__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--spacing-06);
+}
+.wild__item {
+  background: var(--layer-01);
+  border: 1px solid var(--border-subtle);
+  padding: var(--spacing-05) var(--spacing-06) var(--spacing-06);
+}
+.wild__figure {
+  margin: 0 0 var(--spacing-05);
+  background: var(--chart-canvas);
+}
+.wild__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.wild__caption {
+  margin: 0 0 var(--spacing-03);
+  font-weight: 600;
+}
+.wild__note {
+  margin: 0 0 var(--spacing-04);
+  color: var(--text-secondary);
+}
+.wild__credit {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-helper);
+}
+
 /* references page */
 .refs {
   padding-block: var(--spacing-08) var(--spacing-10);

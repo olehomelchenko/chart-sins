@@ -8,6 +8,9 @@ tags: ["dual axis", "correlation", "line chart"]
 badChart: "dual-axis-bad"
 fixedChart: "dual-axis-fixed"
 date: 2026-08-05
+related:
+  - aspect-ratio
+  - truncated-y-axis
 citations:
   - key: datatoviz
     note: "Lists “using two Y axes” as a top caveat — a way to manipulate the story."

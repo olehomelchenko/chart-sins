@@ -1,0 +1,65 @@
+---
+// Real specimens of a sin, published by someone else. Sits between the
+// explanation and the citations: first the argument, then proof it happens,
+// then the sources. Renders nothing when a sin has no examples yet.
+import { href } from '../lib/url';
+
+interface WildExample {
+  caption: string;
+  note: string;
+  image?: string;
+  alt?: string;
+  credit: string;
+  sourceUrl?: string;
+  sourceLabel?: string;
+}
+
+interface Props {
+  examples: WildExample[];
+}
+
+const { examples } = Astro.props;
+---
+
+{
+  examples.length > 0 && (
+    <section class="wild" aria-labelledby="wild-h">
+      <h2 id="wild-h" class="wild__title">Caught in the wild</h2>
+      <p class="wild__lede">
+        {examples.length === 1
+          ? 'Not a mock-up. Someone published this.'
+          : 'Not mock-ups. Someone published each of these.'}
+      </p>
+      <ol class="wild__list">
+        {examples.map((ex) => (
+          <li class="wild__item">
+            {ex.image && (
+              <figure class="wild__figure">
+                <img
+                  class="wild__img"
+                  src={href(`wild/${ex.image}`)}
+                  alt={ex.alt ?? ex.caption}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            )}
+            <p class="wild__caption">{ex.caption}</p>
+            <p class="wild__note">{ex.note}</p>
+            <p class="wild__credit">
+              <span>{ex.credit}</span>
+              {ex.sourceUrl && (
+                <>
+                  {' · '}
+                  <a href={ex.sourceUrl} rel="noopener">
+                    {ex.sourceLabel ?? 'source'}
+                  </a>
+                </>
+              )}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}

@@ -8,6 +8,9 @@ tags: ["axis", "area chart", "direction"]
 badChart: "inverted-axis-bad"
 fixedChart: "inverted-axis-fixed"
 date: 2026-08-05
+related:
+  - truncated-y-axis
+  - aspect-ratio
 citations:
   - key: callingbullshit
     note: "Their “Misleading Axes” module collects the axis manipulations, this one included."
