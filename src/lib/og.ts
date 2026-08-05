@@ -5,7 +5,6 @@ import { html } from 'satori-html';
 import { Resvg } from '@resvg/resvg-js';
 import type { TopLevelSpec } from 'vega-lite';
 import { renderChartSvg } from './renderChart';
-import { getReference } from './references';
 
 // OpenGraph card generator. Runs only at build time. Composes a 1200×630 card
 // with satori (text → vector paths, so the raster step needs no fonts) and
@@ -33,13 +32,6 @@ const fonts = [
 
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-
-/** Surname of the first author, for a compact "cited: Tufte, Cairo" line. */
-function shortAuthor(key: string): string {
-  const first = getReference(key).authors.split(/ & |,|;/)[0].trim();
-  const parts = first.split(' ');
-  return parts[parts.length - 1];
-}
 
 /** Render a chart spec to a PNG data URI at a fixed display height (2× for crispness).
  *  Fixing height (not width) keeps tall vconcat charts from overflowing the card. */
@@ -79,13 +71,11 @@ export interface SinCard {
   severity: number;
   badSpec: TopLevelSpec;
   fixedSpec: TopLevelSpec;
-  citationKeys: string[];
 }
 
 export async function renderSinCard(d: SinCard): Promise<Buffer> {
   const bad = await chartImage(d.badSpec, 250);
   const fixed = await chartImage(d.fixedSpec, 250);
-  const cited = d.citationKeys.slice(0, 3).map(shortAuthor).join(', ');
 
   const panel = (label: string, color: string, img: { uri: string; width: number; height: number }) => `
     <div style="display:flex;flex-direction:column;background:#f4f4f4;padding:12px;border-top:5px solid ${color}">
@@ -104,10 +94,7 @@ export async function renderSinCard(d: SinCard): Promise<Buffer> {
         ${panel('THE SIN', '#fa4d56', bad)}
         ${panel('THE FIX', '#42be65', fixed)}
       </div>
-      <div style="display:flex;justify-content:space-between;margin-top:22px;font-size:17px;color:#a8a8a8">
-        <div style="display:flex">${esc(d.category)}</div>
-        <div style="display:flex">${cited ? 'cited: ' + esc(cited) : ''}</div>
-      </div>
+      <div style="display:flex;margin-top:22px;font-size:17px;color:#a8a8a8">${esc(d.category)}</div>
     </div>
   `);
 }

@@ -16,7 +16,6 @@ export const GET: APIRoute = async ({ props }) => {
     severity: sin.data.severity,
     badSpec: getChartSpec(sin.data.badChart),
     fixedSpec: getChartSpec(sin.data.fixedChart),
-    citationKeys: sin.data.citations.map((c) => c.key),
   });
   return new Response(new Uint8Array(png), {
     headers: { 'Content-Type': 'image/png', 'Cache-Control': 'public, max-age=31536000, immutable' },

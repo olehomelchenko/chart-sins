@@ -1,7 +1,7 @@
 ---
 title: "Pie Chart Overload"
 summary: "Eight near-identical slices no human eye can rank. A bar chart was right there."
-poke: "Eight slices, three of them the same size. Nobody can read this. A bar chart could."
+poke: "More slices than anyone can rank by eye. A bar chart was right there."
 category: "Chart-Type Abuse"
 severity: 3
 tags: ["pie chart", "part-to-whole", "comparison"]

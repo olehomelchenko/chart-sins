@@ -1,7 +1,7 @@
 ---
 title: "The Dual-Axis Deception"
 summary: "Two unrelated series on two independent axes, engineered to look correlated."
-poke: "Two y-axes, tuned until the lines kiss. Congratulations — you can now make anything 'cause' anything."
+poke: "Two y-axes, scaled until the lines overlap — and suddenly anything 'causes' anything."
 category: "False Relationships"
 severity: 5
 tags: ["dual axis", "correlation", "line chart"]

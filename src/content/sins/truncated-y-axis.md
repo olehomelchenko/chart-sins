@@ -1,7 +1,7 @@
 ---
 title: "The Truncated Y-Axis"
 summary: "Chopping the baseline off a bar chart to make small differences look enormous."
-poke: "You started the y-axis at 90. That's not a bar chart — it's a magic trick."
+poke: "Your bars don't start at zero. That's not a bar chart — it's a magic trick."
 category: "Misleading Scales"
 severity: 4
 tags: ["bar chart", "axis", "exaggeration"]
