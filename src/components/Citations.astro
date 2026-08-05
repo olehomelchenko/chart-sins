@@ -12,7 +12,7 @@ const resolved = citations.map((c) => ({ ...c, ref: getReference(c.key) }));
   resolved.length > 0 && (
     <section class="receipts" aria-labelledby="receipts-h">
       <h2 id="receipts-h" class="receipts__title">Don’t take our word for it</h2>
-      <p class="receipts__lede">The giants who say the same thing, so you don’t have to argue:</p>
+      <p class="receipts__lede">Other people already made this case, in print, so you don’t have to:</p>
       <ol class="receipts__list">
         {resolved.map(({ ref, note }) => (
           <li class="receipt">

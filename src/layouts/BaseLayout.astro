@@ -55,7 +55,7 @@ const image = Astro.props.image ?? new URL(href('og/default.png'), Astro.site).t
         </a>
         <nav class="site-header__nav" aria-label="Primary">
           <a href={href()}>Sins</a>
-          <a href={href('canon/')}>Canon</a>
+          <a href={href('references/')}>References</a>
         </nav>
       </div>
     </header>
@@ -75,8 +75,8 @@ const image = Astro.props.image ?? new URL(href('og/default.png'), Astro.site).t
           <p>Every sin has a permanent link and cites its sources — made to share, not to re-explain.</p>
         </div>
         <div class="site-footer__col">
-          <strong>The canon</strong>
-          <p>Each entry stands on the shoulders of the field's giants. <a href={href('canon/')}>See the sources →</a></p>
+          <strong>References</strong>
+          <p>Nothing here is our own opinion dressed up as fact. <a href={href('references/')}>See every source →</a></p>
         </div>
       </div>
     </footer>

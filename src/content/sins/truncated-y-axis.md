@@ -10,7 +10,13 @@ fixedChart: "truncated-axis-fixed"
 date: 2026-08-05
 citations:
   - key: callingbullshit
-    note: "Their “Misleading Axes” module is the canonical explainer for exactly this move."
+    note: "Their “Misleading Axes” module is the standard explainer for exactly this move."
+  - key: huff
+    note: "Huff named it the “gee-whiz graph” in 1954. Seventy years on, nothing about it is new."
+  - key: wilke
+    note: "His chapter on visualizing amounts is blunt: a bar's length is the value, so the scale must begin at zero."
+  - key: economistmistakes
+    note: "The Economist reopening its own charts — several of the mistakes it owns up to are this one."
   - key: clevelandmcgill
     note: "The perception research: readers compare bar length, so length must map to value from zero."
   - key: tufte

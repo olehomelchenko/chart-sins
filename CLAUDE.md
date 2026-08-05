@@ -31,14 +31,25 @@ Each sin page follows one shape: **poke → proof → why → the fix → receip
   (e.g. the dual-axis "sin" deliberately breaks the one-axis rule; its fix uses
   separate honest panels.) When picking chart colors or building a new chart,
   run the `dataviz` skill and validate the palette with its validator.
-- **Citations are core.** Every sin cites the canon (`src/lib/references.ts`)
-  under "Don't take our word for it." Don't invent authority — point at it.
+- **Citations are core, and generous.** Every sin cites sources
+  (`src/lib/references.ts`) under "Don't take our word for it." Don't invent
+  authority — point at it, and point at as much of it as you honestly can.
+  Five-ish sources per sin is normal; a reader who distrusts one author should
+  find another in the list they don't. Adding a new reference is routine, not an
+  editorial event — the file is a bibliography to grow, **not a canon to
+  curate**, and coverage of it is not a goal in itself.
+  Never stretch a source to fit: if it doesn't actually make the claim, cite one
+  that does or leave it out. Getting an attribution wrong costs more than a
+  thinner page. A source that *complicates* our position (Kosara on pie charts,
+  Datawrapper's second thoughts on dual axes) is worth citing too — say so in
+  the note.
 - **Internal build decisions stay out of visitor-facing content and the DOM.**
   The design system (Carbon), the typeface (IBM Plex), and the inspiration
   (nohello.net) are engineering choices — they must not appear in page copy,
   the footer, meta tags, or CSS class names on the public site. (They were
   scrubbed once already; keep them out.) Naming them *here*, in repo docs, is
-  fine.
+  fine. **"Canon" is on that list too** — it's our internal shorthand for the
+  reference list; the site says "References" and links to `/references/`.
 
 ## Adding a sin
 

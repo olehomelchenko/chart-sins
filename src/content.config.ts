@@ -13,8 +13,9 @@ const sins = defineCollection({
     summary: z.string(),
     // The cheeky one-line callout — the thing you send the sinner.
     poke: z.string(),
-    // Citations into the canon (src/lib/references.ts) with a per-sin note on
-    // why that source is relevant. This is the "don't take our word for it".
+    // Citations into the reference list (src/lib/references.ts) with a per-sin
+    // note on why that source is relevant. Cite generously — this is the
+    // "don't take our word for it", and more sources is a stronger page.
     citations: z
       .array(z.object({ key: z.string(), note: z.string().optional() }))
       .default([]),

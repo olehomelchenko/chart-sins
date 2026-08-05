@@ -1,9 +1,12 @@
 # Content backlog — what to write next
 
-Working document. The rule that generated this list: **every sin must be
-condemned by something already in the canon** (`src/lib/references.ts`). We
-don't invent authority, so the backlog is mined *from* the sources rather than
-brainstormed and back-filled with citations.
+Working document. Ranked by what is worth writing — the sins people actually
+commit, and the pages most worth sending someone.
+
+Sourcing is a constraint on that list, not the thing that generates it: a sin
+earns a slot because it's worth a page, and then we go find the sources that
+make the case. Never the reverse. What we don't do is invent authority, or
+stretch a source into saying something it doesn't.
 
 The list deliberately mixes registers. Some sins are subtle enough that a
 competent analyst commits them by accident; others are arithmetically void and
@@ -12,33 +15,43 @@ pages we can write, because there's nothing to argue about, and the subtle ones
 are what keep the site useful to people who already know the basics. Severity
 runs 2–5 on purpose.
 
-## Canon coverage
+## Sources in play
 
-Which references are doing work, after the first five sins:
+`src/lib/references.ts` currently holds 22 entries, 18 of them cited by the five
+published sins. This table is a **convenience, not a scoreboard** — it's here so
+you can spot a source that fits a sin you're drafting, not so we can drive the
+right-hand column to zero blanks. An uncited reference is not a debt.
+
+Adding new references is the normal way to strengthen a page. If a sin deserves
+seven sources, give it seven and add whatever's missing to the file.
 
 | Reference | Cited by |
 | --- | --- |
-| `callingbullshit` | truncated-y-axis, inverted-y-axis |
-| `clevelandmcgill` | truncated-y-axis, too-many-pie-slices, aspect-ratio |
+| `munzner` | — |
+| `healy` | — |
+| `schwabish` | — |
+| `ftvisvocab` | — |
 | `tufte` | truncated-y-axis |
-| `howchartslie` | truncated-y-axis, two-y-axes, inverted-y-axis, aspect-ratio |
-| `datatoviz` | two-y-axes, too-many-pie-slices |
-| `spurious` | two-y-axes |
+| `huff` | truncated-y-axis |
 | `swd` | two-y-axes |
+| `spurious` | two-y-axes |
+| `datawrapper` | two-y-axes |
 | `fewpies` | too-many-pie-slices |
-| `junkcharts` | too-many-pie-slices, inverted-y-axis |
+| `showmenumbers` | too-many-pie-slices |
 | `shapeparameter` | aspect-ratio |
-| **`munzner`** | — |
-| **`wilke`** | — |
-| **`healy`** | — |
-| **`huff`** | — |
-| **`schwabish`** | — |
-| **`ftvisvocab`** | — |
-| **`datawrapper`** | — |
+| `vizwtf` | inverted-y-axis |
+| `wilke` | too-many-pie-slices, truncated-y-axis |
+| `truthfulart` | aspect-ratio, two-y-axes |
+| `callingbullshit` | inverted-y-axis, truncated-y-axis |
+| `economistmistakes` | inverted-y-axis, truncated-y-axis |
+| `datatoviz` | too-many-pie-slices, two-y-axes |
+| `junkcharts` | inverted-y-axis, too-many-pie-slices |
+| `eagereyes` | aspect-ratio, too-many-pie-slices |
+| `clevelandmcgill` | aspect-ratio, too-many-pie-slices, truncated-y-axis |
+| `howchartslie` | aspect-ratio, inverted-y-axis, truncated-y-axis, two-y-axes |
 
-Seven idle references. Each is an authority we've already endorsed on the canon
-page, so a sin that leans on one is cheap to justify and strengthens the page it
-sits on. The backlog is ordered to bring them all in.
+The citation lists in each entry below are **starting points, not budgets** —
+add to them while drafting.
 
 ## Ranked backlog
 
@@ -108,8 +121,7 @@ or it is nothing), `schwabish`, `ftvisvocab`.
 
 The bar-of-means: every group collapsed to one number, so wildly different
 distributions draw identical bars. Wilke devotes a section to exactly this and
-Healy makes the perceptual case; it's the natural home for three idle references
-at once.
+Healy makes the perceptual case.
 
 **Charts:** bad = grouped bar of means. Fixed = strip/box plot over the same
 observations, means still marked.
@@ -122,9 +134,8 @@ observations, means still marked.
 
 Scaling a circle's *radius* by the value instead of its *area* squares the
 apparent difference. This is Tufte's Lie Factor with an actual number attached,
-and it's the cleanest possible excuse to bring Munzner's channel ranking onto a
-page — the same ranking that already underwrites the pie and truncated-axis
-sins.
+and Munzner's channel ranking — already underwriting the pie and truncated-axis
+sins — applies directly.
 
 **Charts:** bad = radius ∝ value (a `calculate` transform squaring the size
 encoding). Fixed = area ∝ value, or better, the same values as a dot plot where
@@ -160,7 +171,7 @@ region starts with A."
 
 Venial, universal, and the single most useful page to fire at a colleague —
 which is the whole product thesis. Low severity is a feature: the gallery needs
-a range, and this one brings in the FT Visual Vocabulary.
+a range.
 
 **Charts:** bad = categorical bars in alphabetical order. Fixed = same bars
 sorted by value.
@@ -179,8 +190,8 @@ rediscovering them:
   TopoJSON geometry and a build-time data dependency we don't have yet. Strong
   candidate the moment we take that on.
 - **Rainbow color scales for continuous data** (Wilke, Munzner, and Datawrapper's
-  four-part color-scale series — the best free treatment of this anywhere) — the
-  canon backing is no longer the constraint. What still blocks it is ours: the
+  four-part color-scale series — the best free treatment of this anywhere) —
+  sourcing is not the constraint. What still blocks it is ours: the
   fixed chart needs a sequential ramp validated on `--chart-canvas` in both
   themes. Do the palette work first (`dataviz` skill + its validator), then this
   is ready to write.

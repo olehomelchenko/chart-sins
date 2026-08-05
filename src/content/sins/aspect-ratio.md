@@ -15,6 +15,10 @@ citations:
     note: "Slope is one of the elementary perceptual tasks they ranked — and it's the one the shape of the box distorts."
   - key: howchartslie
     note: "Cairo on proportions as a storytelling lever, not a neutral container."
+  - key: eagereyes
+    note: "Kosara’s write-up of banking to 45° — including the caveat that the rule was derived for comparing slopes, not as a universal law."
+  - key: truthfulart
+    note: "The positive version of the argument: choosing a shape deliberately is part of drawing an honest chart."
 ---
 
 ## The sin

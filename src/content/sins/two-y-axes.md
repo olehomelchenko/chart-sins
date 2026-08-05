@@ -17,6 +17,10 @@ citations:
     note: "Cairo on how aligned axes manufacture relationships that aren’t there."
   - key: swd
     note: "Knaflic’s standing advice: avoid the second axis; separate or index instead."
+  - key: datawrapper
+    note: "“Why not to use two axes, and what to use instead” walks through why the two scales' proportions are arbitrary — and they've since published second thoughts, which is worth reading too."
+  - key: truthfulart
+    note: "Cairo on what a chart owes its reader, which is the standard this one fails."
 ---
 
 ## The sin

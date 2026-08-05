@@ -17,6 +17,12 @@ citations:
     note: "Kaiser Fung’s running #onelesspie campaign exists for precisely this chart."
   - key: datatoviz
     note: "Pie charts are the first entry in its catalogue of caveats."
+  - key: wilke
+    note: "His chapter on proportions puts the same data in a pie, a stacked bar and side-by-side bars, so you can see what each one costs you."
+  - key: eagereyes
+    note: "Kosara has actually run the experiments, and complicates the blanket condemnation — read him before swearing off pies entirely."
+  - key: showmenumbers
+    note: "Few’s full design manual, for when the short broadside isn’t enough to win the argument."
 ---
 
 ## The sin

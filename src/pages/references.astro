@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { REFERENCES, citeLabel, type RefKind } from '../lib/references';
+
+const groups: { kind: RefKind; heading: string; blurb: string }[] = [
+  { kind: 'book', heading: 'Books', blurb: 'Book-length treatments, for when you need the whole argument.' },
+  { kind: 'paper', heading: 'Papers & essays', blurb: 'Where the evidence actually lives — experiments, and practitioners marking their own homework.' },
+  { kind: 'site', heading: 'Sites', blurb: 'Living references you can link straight into a thread.' },
+];
+
+const byKind = (kind: RefKind) => Object.values(REFERENCES).filter((r) => r.kind === kind);
+---
+
+<BaseLayout title="References — Chart Sins" description="The books, papers, and sites cited across Chart Sins.">
+  <section class="wrap hero">
+    <p class="hero__eyebrow">// everything we cite</p>
+    <h1 class="expressive-display">References</h1>
+    <p class="hero__lede">
+      Every sin here cites its sources, and this is all of them in one place.
+      None of these arguments are ours — they were made, tested and written up
+      by other people, so you can link the evidence instead of relitigating it.
+    </p>
+  </section>
+
+  <div class="wrap refs">
+    {
+      groups.map((g) => (
+        <section class="refs__group">
+          <h2 class="refs__heading productive-heading-03">{g.heading}</h2>
+          <p class="helper">{g.blurb}</p>
+          <ul class="refs__list">
+            {byKind(g.kind).map((ref) => (
+              <li class="refs__item">
+                <div class="refs__cite">
+                  {ref.url ? (
+                    <a href={ref.url} rel="noopener" class="refs__work">{citeLabel(ref)}</a>
+                  ) : (
+                    <span class="refs__work">{citeLabel(ref)}</span>
+                  )}
+                  {ref.work && <span class="refs__pub">{ref.work}</span>}
+                  {ref.free && <span class="receipt__free">free online</span>}
+                </div>
+                <p class="refs__blurb">{ref.blurb}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>

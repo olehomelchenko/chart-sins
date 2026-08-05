@@ -15,6 +15,10 @@ citations:
     note: "Cairo's case that readers absorb a chart's shape long before they audit its axis."
   - key: junkcharts
     note: "Fung has redrawn this exact trick more than once — the fix is always just turning the axis back over."
+  - key: economistmistakes
+    note: "A newsroom reopening its own misleading charts, which is the rarest and most useful kind of correction."
+  - key: vizwtf
+    note: "Where the wild-caught specimens live, if you want proof this ships to real readers."
 ---
 
 ## The sin

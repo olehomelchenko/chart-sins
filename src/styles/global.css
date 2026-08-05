@@ -669,23 +669,23 @@ a.receipt__work {
   border-color: var(--support-success);
 }
 
-.more-canon {
+.more-refs {
   margin-top: var(--spacing-07);
   font-family: var(--font-mono);
   font-size: 0.875rem;
 }
 
-/* canon page */
-.canon {
+/* references page */
+.refs {
   padding-block: var(--spacing-08) var(--spacing-10);
 }
-.canon__group {
+.refs__group {
   margin-bottom: var(--spacing-09);
 }
-.canon__heading {
+.refs__heading {
   margin: 0;
 }
-.canon__list {
+.refs__list {
   list-style: none;
   margin: var(--spacing-05) 0 0;
   padding: 0;
@@ -694,29 +694,29 @@ a.receipt__work {
   background: var(--border-subtle);
   border: 1px solid var(--border-subtle);
 }
-.canon__item {
+.refs__item {
   background: var(--layer-01);
   padding: var(--spacing-05) var(--spacing-06);
 }
-.canon__cite {
+.refs__cite {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
   gap: var(--spacing-03);
 }
-.canon__work {
+.refs__work {
   font-weight: 600;
   font-size: 1.0625rem;
   color: var(--text-primary);
 }
-a.canon__work {
+a.refs__work {
   color: var(--link-primary);
 }
-.canon__pub {
+.refs__pub {
   font-size: 0.8125rem;
   color: var(--text-helper);
 }
-.canon__blurb {
+.refs__blurb {
   margin: var(--spacing-03) 0 0;
   color: var(--text-secondary);
   max-width: 44rem;

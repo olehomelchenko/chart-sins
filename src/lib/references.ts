@@ -1,8 +1,14 @@
-// The Canon — the shoulders of giants Chart Sins stands on.
+// References — every source cited anywhere on the site.
 //
 // Each sin cites into this list by key, so a page can say "don't take our word
-// for it" and point at the authority that actually condemns the practice.
-// Add a reference once here; cite it from any number of sins.
+// for it" and point at someone who already made the argument. Add a reference
+// once here; cite it from any number of sins.
+//
+// This is a bibliography, not a curated canon. There is no cap and no bar to
+// clear beyond being real, relevant, and described accurately — so when a sin
+// could cite five sources, cite five. Breadth is the point: a reader who
+// bounces off one author should find another in the same list they already
+// trust. Adding an entry is routine, not an editorial event.
 
 export type RefKind = 'book' | 'site' | 'paper';
 
@@ -14,7 +20,7 @@ export interface Reference {
   year?: number;
   url?: string;
   kind: RefKind;
-  /** One line on why it belongs in the canon. */
+  /** One line on what this source is good for. */
   blurb: string;
   /** True for the free-to-read-online works, surfaced as a hint. */
   free?: boolean;
@@ -48,6 +54,24 @@ export const REFERENCES = {
     url: 'https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/',
     kind: 'book',
     blurb: 'Origin of the “Lie Factor,” chartjunk, and the data-ink ratio.',
+  },
+  truthfulart: {
+    authors: 'Alberto Cairo',
+    title: 'The Truthful Art',
+    work: 'New Riders',
+    year: 2016,
+    url: 'http://www.thefunctionalart.com/',
+    kind: 'book',
+    blurb: 'The companion argument to How Charts Lie: what a chart owes the reader, rather than only how charts betray them.',
+  },
+  showmenumbers: {
+    authors: 'Stephen Few',
+    title: 'Show Me the Numbers',
+    work: 'Analytics Press (2nd ed.)',
+    year: 2012,
+    url: 'https://www.perceptualedge.com/',
+    kind: 'book',
+    blurb: 'The full table-and-graph design manual behind Few’s shorter broadsides.',
   },
   howchartslie: {
     authors: 'Alberto Cairo',
@@ -133,6 +157,15 @@ export const REFERENCES = {
     blurb: 'A modern, chart-by-chart guide to which form fits which job.',
   },
 
+  economistmistakes: {
+    authors: 'Sarah Leo',
+    title: 'Mistakes, we’ve drawn a few',
+    work: 'The Economist',
+    year: 2019,
+    kind: 'paper',
+    blurb: 'A newsroom publicly reopening its own misleading charts and redrawing them — the rare correction written by the people who made the error.',
+  },
+
   // --- sites ---
   datatoviz: {
     authors: 'Yan Holtz & Conor Healy',
@@ -170,6 +203,24 @@ export const REFERENCES = {
     blurb: 'Thousands of nonsense correlations — the canonical proof that “they move together” proves nothing.',
     free: true,
   },
+  eagereyes: {
+    authors: 'Robert Kosara',
+    title: 'eagereyes',
+    work: 'eagereyes.org',
+    url: 'https://eagereyes.org/',
+    kind: 'site',
+    blurb: 'A researcher translating visualization studies into plain English — and often complicating the received wisdom rather than repeating it.',
+    free: true,
+  },
+  vizwtf: {
+    authors: 'WTF Visualizations',
+    title: 'WTF Visualizations',
+    work: 'viz.wtf',
+    url: 'https://viz.wtf/',
+    kind: 'site',
+    blurb: 'A running gallery of real charts that went wrong in the wild — proof these mistakes ship.',
+    free: true,
+  },
   ftvisvocab: {
     authors: 'Financial Times Visual Journalism',
     title: 'Visual Vocabulary',
@@ -183,12 +234,12 @@ export const REFERENCES = {
 
 export type ReferenceKey = keyof typeof REFERENCES;
 
-/** Resolve a citation key; throws at build time if it isn't in the canon. */
+/** Resolve a citation key; throws at build time if it isn't in the list. */
 export function getReference(key: string): Reference {
   const ref = (REFERENCES as Record<string, Reference>)[key];
   if (!ref) {
     throw new Error(
-      `Reference "${key}" is not in the canon (src/lib/references.ts). Known: ${Object.keys(REFERENCES).join(', ')}`,
+      `Reference "${key}" is not in src/lib/references.ts. Known: ${Object.keys(REFERENCES).join(', ')}`,
     );
   }
   return ref;
