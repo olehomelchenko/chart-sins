@@ -1,5 +1,5 @@
 ---
-title: "The Dual-Axis Deception"
+title: "Two Y-Axes Scaled to Look Correlated"
 summary: "Two unrelated series on two independent axes, engineered to look correlated."
 poke: "Two y-axes, scaled until the lines overlap — and suddenly anything 'causes' anything."
 category: "False Relationships"

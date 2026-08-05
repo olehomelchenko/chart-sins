@@ -34,7 +34,7 @@ sits on. The backlog is ordered to bring them all in.
 
 ## Ranked backlog
 
-### 1. The Cherry-Picked Window — *Deceptive Framing*, severity 5
+### 1. A Cherry-Picked Time Range — *Deceptive Framing*, severity 5
 
 **Poke:** "You started the clock exactly where the story got good."
 
@@ -52,7 +52,7 @@ we can build.
 **Citations:** `huff` (the original con), `callingbullshit`, `howchartslie`,
 `junkcharts`.
 
-### 2. Bars That Hide the Distribution — *Hiding the Data*, severity 4
+### 2. Group Averages Shown Without the Distribution — *Hiding the Data*, severity 4
 
 **Poke:** "Four bars, four averages, and no idea whether the difference is real."
 
@@ -66,7 +66,7 @@ observations, means still marked.
 
 **Citations:** `wilke`, `healy`, `schwabish`, `datatoviz`.
 
-### 3. The Inflated Bubble — *Perceptual Traps*, severity 4
+### 3. Bubbles Sized by Radius Instead of Area — *Perceptual Traps*, severity 4
 
 **Poke:** "You doubled the number and quadrupled the ink."
 
@@ -82,7 +82,7 @@ position does the work.
 
 **Citations:** `munzner`, `clevelandmcgill`, `tufte`, `howchartslie`.
 
-### 4. Alphabetical Is Not a Ranking — *Sloppy Craft*, severity 2
+### 4. Categories Sorted Alphabetically Instead of by Value — *Sloppy Craft*, severity 2
 
 **Poke:** "Your categories are sorted by name. Nobody wants to know which
 region starts with A."
@@ -96,7 +96,7 @@ sorted by value.
 
 **Citations:** `schwabish`, `ftvisvocab`, `swd`, `fewpies`.
 
-### 5. Everything Above the Bottom Floats — *Perceptual Traps*, severity 3
+### 5. Stacked Segments Without a Shared Baseline — *Perceptual Traps*, severity 3
 
 **Poke:** "Only the bottom band of a stacked chart has a straight edge to
 measure against. The rest are guesses."
@@ -117,7 +117,7 @@ out to its own zero baseline), totals preserved.
 
 **Citations:** `datawrapper`, `wilke`, `munzner`, `ftvisvocab`.
 
-### 6. The Reversed Axis — *Misleading Scales*, severity 5
+### 6. An Inverted Y-Axis — *Misleading Scales*, severity 5
 
 **Poke:** "Down means up. You flipped the axis and the trend flipped with it."
 
@@ -127,7 +127,7 @@ support overlaps almost entirely with sins we've already published.
 
 **Citations:** `callingbullshit`, `howchartslie`, `junkcharts`.
 
-### 7. Squashed and Stretched — *Misleading Scales*, severity 3
+### 7. Aspect Ratio That Exaggerates a Trend — *Misleading Scales*, severity 3
 
 **Poke:** "Same data, twice as tall. Aspect ratio is not a styling choice."
 
@@ -158,6 +158,11 @@ rediscovering them:
 
 ## Conventions reminder
 
-Anything picked up from this list still follows `CLAUDE.md`: the poke names the
-general sin and never our sample's numbers, both charts share one dataset, and
-the fixed chart obeys every rule the site preaches.
+Anything picked up from this list still follows `CLAUDE.md`: the title names the
+problem plainly and leaves the wit to the poke, the poke names the general sin
+and never our sample's numbers, both charts share one dataset, and the fixed
+chart obeys every rule the site preaches.
+
+The headings above are working titles written to that rule — they say what the
+sin *is*, so they can be taken as-is or rephrased without having to first decode
+a pun.

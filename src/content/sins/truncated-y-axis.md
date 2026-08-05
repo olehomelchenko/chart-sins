@@ -1,5 +1,5 @@
 ---
-title: "The Truncated Y-Axis"
+title: "Truncated Y-Axis on a Bar Chart"
 summary: "Chopping the baseline off a bar chart to make small differences look enormous."
 poke: "Your bars don't start at zero. That's not a bar chart — it's a magic trick."
 category: "Misleading Scales"

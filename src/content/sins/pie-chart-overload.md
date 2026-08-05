@@ -1,5 +1,5 @@
 ---
-title: "Pie Chart Overload"
+title: "Too Many Slices in a Pie Chart"
 summary: "Eight near-identical slices no human eye can rank. A bar chart was right there."
 poke: "More slices than anyone can rank by eye. A bar chart was right there."
 category: "Chart-Type Abuse"

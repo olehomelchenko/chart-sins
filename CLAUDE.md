@@ -14,6 +14,11 @@ Each sin page follows one shape: **poke → proof → why → the fix → receip
 
 ## Voice & content conventions
 
+- **The title names the problem plainly; the poke carries the voice.** A title
+  is a label someone scans in the gallery and recognizes in a link — write
+  "Truncated Y-Axis on a Bar Chart," not "The Truncated Temptation." Use the
+  field's standard term for the sin where one exists. Save the wit for the poke;
+  that's what it's for.
 - **The poke names the general sin, never the sample's specifics.** A visitor
   didn't "start the axis at 90" — they mis-set the baseline. Write
   "Your bars don't start at zero…", not the numbers from our example data.
