@@ -23,7 +23,7 @@
     "y": {
       "field": "revenue",
       "type": "quantitative",
-      "scale": { "domain": [90, 100] },
+      "scale": { "domain": [90, 100], "zero": false, "clamp": true },
       "title": "Revenue ($M)"
     }
   }

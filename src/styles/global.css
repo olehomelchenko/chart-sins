@@ -235,10 +235,20 @@ code {
   font-family: var(--font-mono);
   letter-spacing: 0;
 }
-@media (max-width: 40rem) {
-  .cds-header__tag {
-    display: none;
-  }
+.cds-header__nav {
+  margin-left: auto;
+  display: flex;
+  gap: var(--spacing-06);
+}
+.cds-header__nav a {
+  color: var(--shell-text-secondary);
+  font-size: 0.875rem;
+  text-decoration: none;
+  border: 0;
+  padding-block: var(--spacing-02);
+}
+.cds-header__nav a:hover {
+  color: var(--shell-text);
 }
 
 /* ------------------------------------------------------------------ *\
@@ -525,6 +535,193 @@ code {
 }
 .prose em {
   color: var(--text-primary);
+}
+
+/* the poke — the shareable one-liner under the title */
+.sin__poke {
+  font-size: 1.375rem;
+  line-height: 1.35;
+  font-weight: 300;
+  color: var(--text-primary);
+  max-width: 42rem;
+  margin: var(--spacing-05) 0 0;
+}
+.compare__note {
+  margin: calc(-1 * var(--spacing-05)) 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-helper);
+}
+
+/* the receipts — citations block */
+.receipts {
+  margin-top: var(--spacing-09);
+  padding-top: var(--spacing-07);
+  border-top: 1px solid var(--border-subtle);
+}
+.receipts__title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.receipts__lede {
+  color: var(--text-secondary);
+  margin: var(--spacing-03) 0 var(--spacing-06);
+}
+.receipts__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+}
+.receipt {
+  background: var(--layer-01);
+  padding: var(--spacing-05) var(--spacing-06);
+}
+.receipt__cite {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--spacing-03);
+}
+.receipt__work {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+a.receipt__work {
+  color: var(--link-primary);
+}
+.receipt__kind {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-helper);
+  border: 1px solid var(--border-subtle);
+  padding: 0 var(--spacing-02);
+}
+.receipt__free {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--support-success);
+}
+.receipt__note {
+  margin: var(--spacing-03) 0 0;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* the share box */
+.share {
+  margin-top: var(--spacing-08);
+  padding: var(--spacing-06);
+  background: var(--layer-01);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--interactive);
+}
+.share__prompt {
+  margin: 0 0 var(--spacing-04);
+  font-weight: 600;
+}
+.share__row {
+  display: flex;
+  gap: 0;
+  max-width: 34rem;
+}
+.share__url {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  padding: var(--spacing-04) var(--spacing-05);
+  background: var(--background);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-strong);
+  border-right: 0;
+}
+.share__url:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+.share__btn {
+  flex: 0 0 auto;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-on-color);
+  background: var(--interactive);
+  border: 1px solid var(--interactive);
+  padding-inline: var(--spacing-05);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-productive);
+}
+.share__btn:hover {
+  background: var(--link-hover);
+}
+.share__btn.is-copied {
+  background: var(--support-success);
+  border-color: var(--support-success);
+}
+
+.more-canon {
+  margin-top: var(--spacing-07);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
+/* canon page */
+.canon {
+  padding-block: var(--spacing-08) var(--spacing-10);
+}
+.canon__group {
+  margin-bottom: var(--spacing-09);
+}
+.canon__heading {
+  margin: 0;
+}
+.canon__list {
+  list-style: none;
+  margin: var(--spacing-05) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+}
+.canon__item {
+  background: var(--layer-01);
+  padding: var(--spacing-05) var(--spacing-06);
+}
+.canon__cite {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--spacing-03);
+}
+.canon__work {
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--text-primary);
+}
+a.canon__work {
+  color: var(--link-primary);
+}
+.canon__pub {
+  font-size: 0.8125rem;
+  color: var(--text-helper);
+}
+.canon__blurb {
+  margin: var(--spacing-03) 0 0;
+  color: var(--text-secondary);
+  max-width: 44rem;
+  line-height: 1.5;
 }
 
 /* ------------------------------------------------------------------ *\

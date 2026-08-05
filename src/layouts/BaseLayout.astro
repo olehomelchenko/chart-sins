@@ -32,7 +32,10 @@ const { title, description = 'A catalogue of data-visualization sins, styled on 
         <a class="cds-header__name" href={href()}>
           Chart&nbsp;Sins <span class="mono">/ honest data-viz</span>
         </a>
-        <span class="cds-header__tag">built on Carbon</span>
+        <nav class="cds-header__nav" aria-label="Primary">
+          <a href={href()}>Sins</a>
+          <a href={href('canon/')}>Canon</a>
+        </nav>
       </div>
     </header>
 

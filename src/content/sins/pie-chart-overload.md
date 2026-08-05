@@ -1,12 +1,22 @@
 ---
 title: "Pie Chart Overload"
 summary: "Eight near-identical slices no human eye can rank. A bar chart was right there."
+poke: "Eight slices, three of them the same size. Nobody can read this. A bar chart could."
 category: "Chart-Type Abuse"
 severity: 3
 tags: ["pie chart", "part-to-whole", "comparison"]
 badChart: "pie-overload-bad"
 fixedChart: "pie-overload-fixed"
 date: 2026-08-05
+citations:
+  - key: fewpies
+    note: "“Save the Pies for Dessert” — the definitive, free takedown of the overloaded pie."
+  - key: clevelandmcgill
+    note: "Their ranking shows angle and area are judged far worse than position along a scale."
+  - key: junkcharts
+    note: "Kaiser Fung’s running #onelesspie campaign exists for precisely this chart."
+  - key: datatoviz
+    note: "Pie charts are the first entry in its catalogue of caveats."
 ---
 
 ## The sin

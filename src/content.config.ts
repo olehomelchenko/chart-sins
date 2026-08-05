@@ -11,6 +11,13 @@ const sins = defineCollection({
     title: z.string(),
     // Short one-line summary shown on the index gallery.
     summary: z.string(),
+    // The cheeky one-line callout — the thing you send the sinner.
+    poke: z.string(),
+    // Citations into the canon (src/lib/references.ts) with a per-sin note on
+    // why that source is relevant. This is the "don't take our word for it".
+    citations: z
+      .array(z.object({ key: z.string(), note: z.string().optional() }))
+      .default([]),
     // Grouping, e.g. "Misleading Scales", "Chart-Type Abuse".
     category: z.string(),
     // 1 (venial) … 5 (mortal). Drives the flame rating in the UI.

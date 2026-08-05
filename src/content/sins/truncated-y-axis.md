@@ -1,12 +1,22 @@
 ---
 title: "The Truncated Y-Axis"
 summary: "Chopping the baseline off a bar chart to make small differences look enormous."
+poke: "You started the y-axis at 90. That's not a bar chart — it's a magic trick."
 category: "Misleading Scales"
 severity: 4
 tags: ["bar chart", "axis", "exaggeration"]
 badChart: "truncated-axis-bad"
 fixedChart: "truncated-axis-fixed"
 date: 2026-08-05
+citations:
+  - key: callingbullshit
+    note: "Their “Misleading Axes” module is the canonical explainer for exactly this move."
+  - key: clevelandmcgill
+    note: "The perception research: readers compare bar length, so length must map to value from zero."
+  - key: tufte
+    note: "The “Lie Factor” puts an actual number on how much the graphic exaggerates."
+  - key: howchartslie
+    note: "Cairo devotes a chapter to scale manipulation like this one."
 ---
 
 ## The sin

@@ -1,0 +1,36 @@
+---
+import { getReference, citeLabel } from '../lib/references';
+
+interface Props {
+  citations: { key: string; note?: string }[];
+}
+const { citations } = Astro.props;
+const resolved = citations.map((c) => ({ ...c, ref: getReference(c.key) }));
+---
+
+{
+  resolved.length > 0 && (
+    <section class="receipts" aria-labelledby="receipts-h">
+      <h2 id="receipts-h" class="receipts__title">Don’t take our word for it</h2>
+      <p class="receipts__lede">The giants who say the same thing, so you don’t have to argue:</p>
+      <ol class="receipts__list">
+        {resolved.map(({ ref, note }) => (
+          <li class="receipt">
+            <div class="receipt__cite">
+              {ref.url ? (
+                <a href={ref.url} rel="noopener" class="receipt__work">
+                  {citeLabel(ref)}
+                </a>
+              ) : (
+                <span class="receipt__work">{citeLabel(ref)}</span>
+              )}
+              <span class={`receipt__kind receipt__kind--${ref.kind}`}>{ref.kind}</span>
+              {ref.free && <span class="receipt__free">free online</span>}
+            </div>
+            {note && <p class="receipt__note">{note}</p>}
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}
