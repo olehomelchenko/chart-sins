@@ -23,12 +23,12 @@ export function getChartSpec(name: string): TopLevelSpec {
   return spec;
 }
 
-/** A 1–5 severity as five booleans, for the Carbon-style severity meter. */
+/** A 1–5 severity as five booleans, for the severity meter. */
 export function severityUnits(severity: number): boolean[] {
   return Array.from({ length: 5 }, (_, i) => i < severity);
 }
 
-// Stable category -> Carbon tag color. Known categories get a hand-picked hue;
+// Stable category -> tag color. Known categories get a hand-picked hue;
 // anything new hashes to a stable colour so the palette never churns.
 const TAG_COLORS = ['purple', 'teal', 'red', 'blue', 'magenta'] as const;
 const CATEGORY_TAG: Record<string, (typeof TAG_COLORS)[number]> = {
@@ -37,7 +37,7 @@ const CATEGORY_TAG: Record<string, (typeof TAG_COLORS)[number]> = {
   'Chart-Type Abuse': 'purple',
 };
 
-/** Map a category label to a Carbon tag colour modifier. */
+/** Map a category label to a tag colour modifier. */
 export function tagModifier(category: string): (typeof TAG_COLORS)[number] {
   if (CATEGORY_TAG[category]) return CATEGORY_TAG[category];
   let hash = 0;

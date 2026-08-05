@@ -1,21 +1,20 @@
 /*
-  Chart Sins — styled on the Carbon Design System.
+  Chart Sins — token-driven style layer.
 
-  This is a token-driven layer, the way Carbon itself is built:
-  - Color/theme tokens mirror Carbon's White + Gray 100 themes, layered
-    (background -> layer-01 -> layer-02) rather than picked ad hoc.
-  - Spacing follows Carbon's 8px mini-unit scale ($spacing-01..13).
-  - Type is IBM Plex, split into Carbon's "productive" (UI/reading) and
-    "expressive" (large, light-weight display) moments.
-  - Motion uses Carbon's productive easing + duration tokens.
-  - Geometry is Carbon: square corners, 1px subtle borders, a 2px focus ring.
+  - Color/theme tokens are layered (background -> layer-01 -> layer-02) with
+    a light and a dark theme.
+  - Spacing follows an 8px mini-unit scale.
+  - Type is split into "productive" (UI/reading) and "expressive" (large,
+    light-weight display) roles.
+  - Motion uses shared easing + duration tokens.
+  - Geometry: square corners, 1px subtle borders, a 2px focus ring.
 */
 
 /* ------------------------------------------------------------------ *\
    Tokens — White theme (light) is the default :root.
 \* ------------------------------------------------------------------ */
 :root {
-  /* --- spacing scale (Carbon $spacing-01 .. 13) --- */
+  /* --- spacing scale (8px mini-unit scale) --- */
   --spacing-01: 0.125rem;
   --spacing-02: 0.25rem;
   --spacing-03: 0.5rem;
@@ -30,7 +29,7 @@
   --spacing-12: 6rem;
   --spacing-13: 10rem;
 
-  /* --- motion (Carbon) --- */
+  /* --- motion --- */
   --ease-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
   --ease-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
   --dur-fast: 110ms;
@@ -39,7 +38,7 @@
 
   /* --- layout --- */
   --page-max: 82rem;
-  --measure: 40rem; /* Carbon reading measure ~640px */
+  --measure: 40rem; /* reading measure ~640px */
 
   /* --- color tokens: White theme --- */
   --background: #ffffff;
@@ -59,13 +58,13 @@
   --support-error: #da1e28;
   --support-success: #198038;
 
-  /* header/footer shell is always dark in Carbon */
+  /* header/footer shell is always dark in both themes */
   --shell-bg: #161616;
   --shell-border: #393939;
   --shell-text: #f4f4f4;
   --shell-text-secondary: #a8a8a8;
 
-  /* chart canvas — a fixed light Carbon layer in BOTH themes, so the
+  /* chart canvas — a fixed light layer in BOTH themes, so the
      build-time-baked chart ink keeps AA contrast without theme-reactive SVG */
   --chart-canvas: #f4f4f4;
 
@@ -115,7 +114,7 @@ html {
 
 body {
   margin: 0;
-  /* Carbon productive body-02 */
+  /* base body text */
   font-size: 1rem;
   line-height: 1.5;
   letter-spacing: 0;
@@ -133,7 +132,7 @@ a:hover {
   border-bottom-color: currentColor;
 }
 
-/* Carbon focus ring — 2px, high-contrast, square */
+/* focus ring — 2px, high-contrast, square */
 :where(a, button, [tabindex]):focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
@@ -149,10 +148,10 @@ code {
 }
 
 /* ------------------------------------------------------------------ *\
-   Type scale — productive + expressive (Carbon)
+   Type scale — productive + expressive
 \* ------------------------------------------------------------------ */
 .expressive-display {
-  font-weight: 300; /* Carbon expressive uses light weight at large sizes */
+  font-weight: 300; /* expressive uses light weight at large sizes */
   font-size: clamp(2.25rem, 1.4rem + 4.2vw, 4rem);
   line-height: 1.07;
   letter-spacing: -0.02em;
@@ -196,16 +195,16 @@ code {
 }
 
 /* ------------------------------------------------------------------ *\
-   UI Shell header — Carbon's header is dark in every theme
+   Header — dark in every theme
 \* ------------------------------------------------------------------ */
-.cds-header {
+.site-header {
   position: sticky;
   top: 0;
   z-index: 10;
   background: var(--shell-bg);
   border-bottom: 1px solid var(--shell-border);
 }
-.cds-header__inner {
+.site-header__inner {
   display: flex;
   align-items: center;
   gap: var(--spacing-05);
@@ -214,7 +213,7 @@ code {
   margin-inline: auto;
   padding-inline: var(--spacing-05);
 }
-.cds-header__name {
+.site-header__name {
   color: var(--shell-text);
   font-weight: 600;
   font-size: 1rem;
@@ -222,37 +221,37 @@ code {
   text-decoration: none;
   border: 0;
 }
-.cds-header__name:hover {
+.site-header__name:hover {
   color: var(--shell-text);
 }
-.cds-header__name .mono {
+.site-header__name .mono {
   font-family: var(--font-mono);
   font-weight: 400;
 }
-.cds-header__tag {
+.site-header__tag {
   color: var(--shell-text-secondary);
   font-size: 0.8125rem;
   font-family: var(--font-mono);
   letter-spacing: 0;
 }
-.cds-header__nav {
+.site-header__nav {
   margin-left: auto;
   display: flex;
   gap: var(--spacing-06);
 }
-.cds-header__nav a {
+.site-header__nav a {
   color: var(--shell-text-secondary);
   font-size: 0.875rem;
   text-decoration: none;
   border: 0;
   padding-block: var(--spacing-02);
 }
-.cds-header__nav a:hover {
+.site-header__nav a:hover {
   color: var(--shell-text);
 }
 
 /* ------------------------------------------------------------------ *\
-   Tag (Carbon tags are the one rounded element)
+   Tag (the one rounded element)
 \* ------------------------------------------------------------------ */
 .tag {
   display: inline-flex;
@@ -268,7 +267,7 @@ code {
   color: var(--text-secondary);
   border: 1px solid transparent;
 }
-/* Carbon tag color pairings (light bg + readable ink) */
+/* tag color pairings (light bg + readable ink) */
 .tag--purple { background: #e8daff; color: #491d8b; }
 .tag--teal   { background: #9ef0f0; color: #005d5d; }
 .tag--red    { background: #ffd7d9; color: #a2191f; }
@@ -283,7 +282,7 @@ code {
 }
 
 /* ------------------------------------------------------------------ *\
-   Severity meter — 5 geometric units (Carbon-flavored, not emoji)
+   Severity meter — 5 geometric units (not emoji)
 \* ------------------------------------------------------------------ */
 .severity {
   display: inline-flex;
@@ -335,7 +334,7 @@ code {
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
-  gap: 1px; /* Carbon tiles sit in a 1px grid of border color */
+  gap: 1px; /* tiles sit in a 1px grid of border color */
   background: var(--border-subtle);
   border: 1px solid var(--border-subtle);
   margin-block: var(--spacing-09) var(--spacing-10);
@@ -475,7 +474,7 @@ code {
   background: var(--support-success);
 }
 
-/* build-time chart, on a fixed light Carbon canvas */
+/* build-time chart, on a fixed light canvas */
 .vega-chart {
   margin: 0;
 }
@@ -511,7 +510,7 @@ code {
   padding: 0;
 }
 
-/* long-form prose — Carbon reading measure + productive type */
+/* long-form prose — reading measure + productive type */
 .prose {
   max-width: var(--measure);
   margin-top: var(--spacing-08);
@@ -727,12 +726,12 @@ a.canon__work {
 /* ------------------------------------------------------------------ *\
    Footer + colophon
 \* ------------------------------------------------------------------ */
-.cds-footer {
+.site-footer {
   background: var(--layer-01);
   border-top: 1px solid var(--border-subtle);
   margin-top: var(--spacing-12);
 }
-.cds-footer__inner {
+.site-footer__inner {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-05) var(--spacing-09);
@@ -740,13 +739,13 @@ a.canon__work {
   font-size: 0.8125rem;
   color: var(--text-secondary);
 }
-.cds-footer__col strong {
+.site-footer__col strong {
   display: block;
   color: var(--text-primary);
   font-weight: 600;
   margin-bottom: var(--spacing-03);
 }
-.cds-footer__col p {
+.site-footer__col p {
   margin: 0;
   max-width: 22rem;
   line-height: 1.5;

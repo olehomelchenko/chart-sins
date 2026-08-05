@@ -1,13 +1,13 @@
 ---
-// Build-time Vega-Lite renderer, themed on Carbon.
+// Build-time Vega-Lite renderer.
 //
 // Runs only during `astro build` (and dev SSR), never in the browser: it
-// compiles a Vega-Lite spec to Vega with a Carbon theme (IBM Plex type +
-// Carbon's data-visualization palette), renders it headlessly to a static SVG
-// string, and inlines it. Zero client-side JavaScript, no Vega runtime shipped.
+// compiles a Vega-Lite spec to Vega with the site theme, renders it headlessly
+// to a static SVG string, and inlines it. Zero client-side JavaScript, no Vega
+// runtime shipped.
 //
-// The chart sits on a fixed light Carbon canvas (--chart-canvas) in both
-// themes, so this single baked render keeps AA contrast in light and dark.
+// The chart sits on a fixed light canvas (--chart-canvas) in both themes, so
+// this single baked render keeps AA contrast in light and dark.
 import * as vega from 'vega';
 import { compile, type TopLevelSpec, type Config } from 'vega-lite';
 
@@ -19,8 +19,8 @@ interface Props {
 
 const { spec, title, caption } = Astro.props;
 
-// Carbon Vega theme — the design-system parameters the renderer consumes.
-const carbonTheme: Config = {
+// Chart theme — the visual parameters the renderer consumes.
+const chartTheme: Config = {
   font: 'IBM Plex Sans',
   background: 'transparent',
   view: { stroke: null },
@@ -54,8 +54,8 @@ const carbonTheme: Config = {
     titleColor: '#393939',
     symbolType: 'square',
   },
-  // Carbon data-visualization categorical palette (validated: passes the
-  // dataviz colorblind/contrast checks on the --chart-canvas surface).
+  // Categorical palette (validated colorblind-safe/contrast on the
+  // --chart-canvas surface).
   range: {
     category: ['#8a3ffc', '#009d9a', '#fa4d56', '#0f62fe', '#24a148', '#d02670', '#b28600', '#1192e8'],
   },
@@ -65,7 +65,7 @@ let svg = '';
 let error: string | null = null;
 
 try {
-  const vgSpec = compile(spec, { config: carbonTheme }).spec;
+  const vgSpec = compile(spec, { config: chartTheme }).spec;
   const view = new vega.View(vega.parse(vgSpec), { renderer: 'none' }).initialize();
   svg = await view.toSVG();
   view.finalize();

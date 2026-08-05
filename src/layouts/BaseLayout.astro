@@ -1,5 +1,5 @@
 ---
-// IBM Plex, self-hosted via @fontsource (no external requests) — Carbon's typeface.
+// Self-hosted webfonts via @fontsource (no external requests).
 import '@fontsource/ibm-plex-sans/300.css';
 import '@fontsource/ibm-plex-sans/400.css';
 import '@fontsource/ibm-plex-sans/600.css';
@@ -12,7 +12,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'A catalogue of data-visualization sins, styled on the Carbon Design System.' } =
+const { title, description = 'A catalogue of data-visualization sins — the deceptive chart, why it misleads, and the honest fix.' } =
   Astro.props;
 ---
 
@@ -27,12 +27,12 @@ const { title, description = 'A catalogue of data-visualization sins, styled on 
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="cds-header">
-      <div class="cds-header__inner">
-        <a class="cds-header__name" href={href()}>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__name" href={href()}>
           Chart&nbsp;Sins <span class="mono">/ honest data-viz</span>
         </a>
-        <nav class="cds-header__nav" aria-label="Primary">
+        <nav class="site-header__nav" aria-label="Primary">
           <a href={href()}>Sins</a>
           <a href={href('canon/')}>Canon</a>
         </nav>
@@ -43,22 +43,19 @@ const { title, description = 'A catalogue of data-visualization sins, styled on 
       <slot />
     </main>
 
-    <footer class="cds-footer">
-      <div class="wrap cds-footer__inner">
-        <div class="cds-footer__col">
+    <footer class="site-footer">
+      <div class="wrap site-footer__inner">
+        <div class="site-footer__col">
           <strong>Chart Sins</strong>
           <p>An educational catalogue of data-visualization mistakes — the bad chart, why it deceives, and the honest fix.</p>
         </div>
-        <div class="cds-footer__col">
-          <strong>Design</strong>
-          <p>
-            Built on the <a href="https://carbondesignsystem.com" rel="noopener">Carbon Design System</a>'s
-            principles — open, modular, consistent, inclusive. Typeface: IBM&nbsp;Plex.
-          </p>
+        <div class="site-footer__col">
+          <strong>Built to be sent</strong>
+          <p>Every sin has a permanent link and cites its sources — made to share, not to re-explain.</p>
         </div>
-        <div class="cds-footer__col">
-          <strong>Charts</strong>
-          <p>Authored in Vega-Lite, rendered to static SVG at build time on Carbon's data-visualization palette.</p>
+        <div class="site-footer__col">
+          <strong>The canon</strong>
+          <p>Each entry stands on the shoulders of the field's giants. <a href={href('canon/')}>See the sources →</a></p>
         </div>
       </div>
     </footer>
