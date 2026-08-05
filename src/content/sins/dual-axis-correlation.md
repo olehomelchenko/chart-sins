@@ -17,8 +17,14 @@ citations:
     note: "Cairo on how aligned axes manufacture relationships that aren’t there."
   - key: swd
     note: "Knaflic’s standing advice: avoid the second axis; separate or index instead."
+  - key: isenberg2011
+    note: "They tested it: the dual-axis (“superimposed”) chart “performed poorly both in terms of accuracy and time” and was “ranked lowest by all but one participant.”"
   - key: datawrapper
-    note: "“Why not to use two axes, and what to use instead” walks through why the two scales' proportions are arbitrary — and they've since published second thoughts, which is worth reading too."
+    note: "“Why not to use two axes” — the scales are arbitrary, so they can “(deliberately) mislead readers about the relationship between the two data series.” Of the four uses they examine, only the alternative-scale one survives. In 2026 they softened the verdict for expert audiences while keeping every objection intact."
+  - key: economistmistakes
+    note: "Filed under “forcing a relationship by cherry-picking scales”: two series fell by three units each, which was −14% on one axis and −7% on the other, and the chart implied a perfect correlation."
+  - key: fewdualaxes
+    note: "Few takes the dual-axis case seriously enough to work through it properly, and still can't find a situation that warrants one."
   - key: truthfulart
     note: "Cairo on what a chart owes its reader, which is the standard this one fails."
 ---
@@ -47,9 +53,16 @@ It isn't automatically dishonest, and this is why the severity here isn't a 5.
 A second axis is legitimate when both axes describe **the same quantity** —
 °C and °F, millimetres and inches, a count and that same count as a share of the
 total. The mapping between the two scales is fixed by arithmetic, so there's
-nothing for you to tune and nothing for the reader to be misled about. Some
-practitioners avoid the second axis even then, as a matter of house style; that
-is a preference, not a rule, and it's not what this page is about.
+nothing for you to tune and nothing for the reader to be misled about.
+
+That's not just our line. Datawrapper examined the four reasons people reach for
+a second axis and concluded that only this one — "an alternative scale and not a
+second data series" — can be used without being potentially misleading. Their
+example is Fahrenheit against Celsius.
+
+Audience matters too: readers trained on these charts, in financial services for
+instance, do read them correctly. If that's genuinely who you're drawing for,
+this page is not about you.
 
 The line is whether *you* picked the alignment. If sliding one scale would
 change the story, you're on the wrong side of it.

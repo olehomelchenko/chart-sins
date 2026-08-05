@@ -13,7 +13,7 @@ link here and moves on.
    post say X, and in what words?"
 2. **Human** fetches it and drops the content into `docs/sources/<slug>.md`,
    then points the agent at it. Raw text is fine; so is a paragraph of notes.
-   Whatever's least effort.
+   Whatever's least effort. (PDFs work too — text extracts fine.)
 3. **Agent** uses it as-is or distills it into a citation note, updates the
    relevant sin, and moves the row to *Settled* with what it concluded.
 
@@ -30,41 +30,38 @@ Two standing rules for step 3:
 
 | # | Source | What we need to know |
 | --- | --- | --- |
-| 1 | `blog.datawrapper.de/pie-charts/` — "What to consider when creating pie charts" | Does it state that a pie's parts must be mutually exclusive and sum to a meaningful whole? Exact wording if so. Wanted for backlog entries 2 and 3 (both pie-misuse sins), where the citation note is currently a placeholder. |
-| 2 | `blog.datawrapper.de/dualaxis/` — "Why not to use two axes" | Two things: (a) their original three objections, in their words; (b) the July 2026 update where they revised their position — what changed, and how far. Our dual-axis page cites both halves and I'd rather quote them than characterize them. |
-| 3 | `blog.datawrapper.de/which-color-scale-to-use-in-data-vis/` + the other three parts of the series | What they actually say about rainbow/spectral scales. Needed before writing the rainbow-scale sin (see backlog, "Not yet buildable"). |
-| 4 | The Economist, "Mistakes, we've drawn a few" (Sarah Leo, April 2019) | The **canonical URL**, so the reference can carry a link — it currently ships without one because I couldn't confirm the address. Also: which specific mistakes it owns up to (see claim V1 below). |
-| 5 | Cleveland, McGill & McGill 1988, "The Shape Parameter of a Two-Variable Graph", JASA 83:289–300 | A stable link (JSTOR ID or DOI) for the reference entry, which currently has no URL. |
-| 6 | `blog.datawrapper.de/stacked-column-charts/` | The baseline-comparison passage in their words, for backlog entry 6. Search gave me a paraphrase; I'd like the sentence. |
+| 7 | Isenberg, Bezerianos, Dragicevic & Fekete (2011), *A Study on Dual-Scale Data Charts* | **Venue and DOI.** It's now cited on the dual-axis sin as `isenberg2011` and ships with no `work` and no `url`, because Datawrapper's article names only authors, title and year. |
+| 8 | Stephen Few, *Dual-Scaled Axes in Graphs: Are They Ever the Best Solution?* (Perceptual Edge) | **Year and URL** for `fewdualaxes`, same situation as above. |
+| 9 | Datawrapper color-scale series, **parts 2, 3 and 4** | Whether any of them argues against rainbow/spectral scales. Part 1 does not — see the correction under *Settled*. The rainbow sin has no source until this lands. |
+| 10 | Robert Kosara, *How The Rainbow Color Map Misleads* (eagereyes) | The actual argument, in his words. Currently the only known candidate source for the rainbow sin. |
+| 11 | Robert Kosara, *Understanding Pie Charts* (eagereyes) | URL, and what his experiments actually found. We lean on this to justify not condemning pie charts outright (claim V7). |
+| 12 | The Economist, "Mistakes, we've drawn a few" | **Canonical URL only** — the content arrived and is settled below, but `economistmistakes` still ships without a link. |
 
 ## Claims to verify
 
-These are already **live on the site**. Each rests on recall rather than a
-source I opened this session. None are wild guesses, but they're stated with
-more confidence than I earned, and a wrong attribution costs us more than a
-thinner page would have. Ordered by how much I'd want to check them.
+Live on the site, resting on recall rather than a source anyone opened.
 
 | # | Where | The claim | Confidence |
 | --- | --- | --- | --- |
-| V1 | `truncated-y-axis` → `economistmistakes` | "Several of the mistakes it owns up to are this one" — i.e. that the Economist piece includes truncated-axis examples specifically. | Inference from the article's premise, not from reading it. **Check first.** |
 | V2 | `inverted-y-axis` → `junkcharts` | "Fung has redrawn this exact trick more than once" — that Junk Charts has covered inverted axes repeatedly. | Plausible, unverified. |
 | V3 | `inverted-y-axis` → `vizwtf` | That inverted/flipped axes feature among the specimens there. | Generic, unverified. |
 | V4 | `inverted-y-axis` → `callingbullshit` | That their Misleading Axes module covers inversion, not only truncation and scaling. | Moderate. |
-| V5 | `too-many-pie-slices` → `wilke` | That his proportions chapter shows the same data as pie / stacked bar / side-by-side bars. | High, but it's a specific structural claim. |
+| V5 | `too-many-pie-slices` → `wilke` | That his proportions chapter shows the same data as pie / stacked bar / side-by-side bars. | High, but a specific structural claim. |
 | V6 | `truncated-y-axis` → `wilke` | That his "visualizing amounts" chapter argues bar scales must begin at zero. | High. |
-| V7 | `too-many-pie-slices` → `eagereyes` | That Kosara's pie-chart experiments don't support treating the form as broken by nature. | High — his pie work is well known — but we lean on it to set our stance, so it should be solid. |
+| V7 | `too-many-pie-slices` → `eagereyes` | That Kosara's pie-chart experiments don't support treating the form as broken by nature. | **Upgraded.** Datawrapper's pie post independently describes his *Understanding Pie Charts* as a "great research-based explanation of how people read pie charts," so the work exists and is empirical. What it concludes is still second-hand — see queue row 11. |
 | V8 | `truncated-y-axis` → `huff` | That Huff names it the "gee-whiz graph." | High. |
 | V9 | `aspect-ratio` → `clevelandmcgill` | That slope/direction is among the elementary perceptual tasks ranked in the 1984 paper. | High. |
 
-Verified this session and **not** in need of checking: the Datawrapper dual-axis
-and stacked-column posts exist with the titles cited; the 1988 shape-parameter
-paper is the source of banking-to-45° (the 1984 paper is *not*, which is why
-there are two Cleveland entries in the reference list); eagereyes has a
-banking-to-45° write-up including the "it's about comparing slopes" caveat;
-`viz.wtf` is live.
-
 ## Settled
 
-*(Move rows here with the answer, so we don't re-request them.)*
+| # | Source | Outcome |
+| --- | --- | --- |
+| 1 | Datawrapper, "What to consider when creating pie charts" | Received. Gives us the positive case ("great to show how 100% divide up into a few shares," best at 25/50/75%) *and* the limit ("five max"), both now cited on `too-many-pie-slices`. **But** it does not argue that parts must be mutually exclusive, so backlog entries 2–3 can only lean on "one pie chart can only show one total and its shares." Notes narrowed to match. → `docs/sources/datawrapper-pie-and-stacked.md` |
+| 2 | Datawrapper, "Why not to use two axes" | Received, and it independently draws the line our page drew: of four uses, "only the last… can be used without being potentially misleading, since it only uses the second Y-axis to show an alternative scale and not a second data series" — their example is °F/°C. The July 2026 revision is a narrowing to expert audiences, not a retraction. Yielded two new references. → `docs/sources/datawrapper-dual-axis.md` |
+| 3 | Datawrapper color series, part 1 | Received, and it **refuted my assumption** — a taxonomy, no rainbow argument, and it endorses multi-hue sequential gradients. Backlog corrected. Parts 2–4 re-queued as row 9. → `docs/sources/datawrapper-color-scales.md` |
+| 4 | The Economist, "Mistakes, we've drawn a few" | Content received; URL still wanted (row 12). Settles **V1** — see below. → `docs/sources/economist-mistakes.md` |
+| 6 | Datawrapper, "What to consider when creating stacked column charts" | Received. Verbatim baseline sentence captured, plus a correction: a 100%-stacked chart has *two* readable baselines, not one. Backlog entry 6 rewritten. → `docs/sources/datawrapper-pie-and-stacked.md` |
+| V1 | `truncated-y-axis` → `economistmistakes` | **Confirmed, and corrected.** Truncating the scale is the article's *first* example, so the citation stands — but there is one such example, not the "several" our note claimed. Note rewritten and now quotes her directly. The same article also turned out to contain a dual-axis chart she caught herself on, which is now cited on `dual-axis-correlation`. |
 
-Nothing yet.
+Row 5 (a stable link for Cleveland, McGill & McGill 1988) is still open and has
+moved to no particular priority — the reference reads fine without a URL.

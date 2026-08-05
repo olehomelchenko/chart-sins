@@ -16,7 +16,7 @@ citations:
   - key: wilke
     note: "His chapter on visualizing amounts is blunt: a bar's length is the value, so the scale must begin at zero."
   - key: economistmistakes
-    note: "The Economist reopening its own charts — several of the mistakes it owns up to are this one."
+    note: "The Economist audits its own archive and leads with this exact sin: a bar chart that “not only downplays” one value “but also exaggerates” the others."
   - key: clevelandmcgill
     note: "The perception research: readers compare bar length, so length must map to value from zero."
   - key: tufte

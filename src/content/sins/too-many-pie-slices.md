@@ -21,6 +21,8 @@ citations:
     note: "His chapter on proportions puts the same data in a pie, a stacked bar and side-by-side bars, so you can see what each one costs you."
   - key: eagereyes
     note: "Kosara has actually run the experiments, and they don't support treating the pie as broken by nature — useful if someone tells you the chart type itself is the problem."
+  - key: datawrapper
+    note: "Both halves in one place: pies are “great to show how 100% divide up into a few shares” and “work best for values around 25%, 50% or 75%” — but “work best if you only have a few values – five max.”"
   - key: showmenumbers
     note: "Few’s full design manual, for when the short broadside isn’t enough to win the argument."
 ---

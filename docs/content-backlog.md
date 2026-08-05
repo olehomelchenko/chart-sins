@@ -17,7 +17,7 @@ runs 2–5 on purpose.
 
 ## Sources in play
 
-`src/lib/references.ts` currently holds 22 entries, 18 of them cited by the five
+`src/lib/references.ts` currently holds 24 entries, 20 of them cited by the five
 published sins. This table is a **convenience, not a scoreboard** — it's here so
 you can spot a source that fits a sin you're drafting, not so we can drive the
 right-hand column to zero blanks. An uncited reference is not a debt.
@@ -31,9 +31,10 @@ seven sources, give it seven and add whatever's missing to the file.
 | `healy` | — |
 | `munzner` | — |
 | `schwabish` | — |
-| `datawrapper` | dual-axis-correlation |
+| `fewdualaxes` | dual-axis-correlation |
 | `fewpies` | too-many-pie-slices |
 | `huff` | truncated-y-axis |
+| `isenberg2011` | dual-axis-correlation |
 | `shapeparameter` | aspect-ratio |
 | `showmenumbers` | too-many-pie-slices |
 | `spurious` | dual-axis-correlation |
@@ -42,12 +43,13 @@ seven sources, give it seven and add whatever's missing to the file.
 | `vizwtf` | inverted-y-axis |
 | `callingbullshit` | inverted-y-axis, truncated-y-axis |
 | `datatoviz` | dual-axis-correlation, too-many-pie-slices |
+| `datawrapper` | dual-axis-correlation, too-many-pie-slices |
 | `eagereyes` | aspect-ratio, too-many-pie-slices |
-| `economistmistakes` | inverted-y-axis, truncated-y-axis |
 | `junkcharts` | inverted-y-axis, too-many-pie-slices |
 | `truthfulart` | aspect-ratio, dual-axis-correlation |
 | `wilke` | too-many-pie-slices, truncated-y-axis |
 | `clevelandmcgill` | aspect-ratio, too-many-pie-slices, truncated-y-axis |
+| `economistmistakes` | dual-axis-correlation, inverted-y-axis, truncated-y-axis |
 | `howchartslie` | aspect-ratio, dual-axis-correlation, inverted-y-axis, truncated-y-axis |
 
 The citation lists in each entry below are **starting points, not budgets** —
@@ -90,8 +92,10 @@ meeting.
 circle. Fixed = bar chart, one bar per option, each labelled "% of respondents"
 with the base stated. Same counts.
 
-**Citations:** `fewpies`, `datawrapper` (their pie-chart guidance covers when the
-form applies at all), `datatoviz`, `junkcharts`.
+**Citations:** `fewpies`, `datawrapper` — but only for the premise: their
+pie-chart post says "one pie chart can only show one total and its shares," and
+it does *not* separately argue that parts must be mutually exclusive. Don't
+stretch it further than that. Plus `datatoviz`, `junkcharts`.
 
 ### 3. A Pie Chart of Rates or Averages — *Impossible Wholes*, severity 5
 
@@ -113,7 +117,8 @@ their metric is, not a counting mistake.
 same averages, plus the volume behind each one so the weighting is visible.
 
 **Citations:** `fewpies`, `munzner` (part-to-whole is a composition of a whole,
-or it is nothing), `schwabish`, `ftvisvocab`.
+or it is nothing), `datawrapper` (same one-total premise as above), `schwabish`,
+`ftvisvocab`.
 
 ### 4. Group Averages Shown Without the Distribution — *Hiding the Data*, severity 4
 
@@ -149,14 +154,20 @@ position does the work.
 measure against. The rest are guesses."
 
 In a stacked column chart, every segment except the bottom one starts at a
-baseline that moves from column to column, so readers can compare the total and
-the bottom series — and nothing else. The series you actually care about is
-usually floating somewhere in the middle. Datawrapper's guidance is blunt about
-it: bring the most important value to the bottom, because readers can only
-compare values that share a baseline.
+baseline that moves from column to column. Datawrapper puts it plainly: "It's
+hard for readers to compare columns that don't start at the same baseline," and
+their fix is to "bring the most important value to the bottom of the chart."
+
+One correction to how I first framed this, from reading their post: a
+100%-stacked chart has **two** readable baselines, not one — the top edge works
+as well as the bottom. So the sin isn't "only the bottom is readable," it's that
+everything *between* the two baselines floats. Write it that way; adjust the
+poke accordingly.
 
 Ubiquitous in business dashboards, which is what earns it a slot despite the
-milder severity.
+milder severity. The Economist's own rainbow-stack example is a good second
+angle: they stacked a selection of euro-area countries, and stacking implies the
+parts are the whole.
 
 **Charts:** bad = stacked columns with the interesting series stranded in the
 middle. Fixed = the same numbers as small multiples (or the key series pulled
@@ -189,12 +200,15 @@ rediscovering them:
 - **Counts on a choropleth instead of rates** (Cairo's set-piece) — needs
   TopoJSON geometry and a build-time data dependency we don't have yet. Strong
   candidate the moment we take that on.
-- **Rainbow color scales for continuous data** (Wilke, Munzner, and Datawrapper's
-  four-part color-scale series — the best free treatment of this anywhere) —
-  sourcing is not the constraint. What still blocks it is ours: the
-  fixed chart needs a sequential ramp validated on `--chart-canvas` in both
-  themes. Do the palette work first (`dataviz` skill + its validator), then this
-  is ready to write.
+- **Rainbow color scales for continuous data** — blocked on **both** counts,
+  and I had this wrong before. Part 1 of Datawrapper's color series turned out
+  to be a taxonomy that makes no argument against rainbow scales at all, and it
+  explicitly endorses multi-hue sequential gradients (see
+  `docs/sources/datawrapper-color-scales.md`). So we currently have *no*
+  verified source for the rainbow critique — parts 2–4 and Kosara's "How The
+  Rainbow Color Map Misleads" are queued. The palette work is still outstanding
+  too: the fixed chart needs a sequential ramp validated on `--chart-canvas` in
+  both themes. Don't draft this one until a real source is in hand.
 
 ## Conventions reminder
 

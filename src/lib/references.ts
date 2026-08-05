@@ -147,6 +147,20 @@ export const REFERENCES = {
     kind: 'paper',
     blurb: 'Made aspect ratio measurable: the width-to-height ratio changes how slopes are judged, and “bank to 45°” came from it.',
   },
+  isenberg2011: {
+    authors: 'Petra Isenberg, Anastasia Bezerianos, Pierre Dragicevic & Jean-Daniel Fekete',
+    title: 'A Study on Dual-Scale Data Charts',
+    year: 2011,
+    kind: 'paper',
+    blurb: 'The experiment on dual-axis charts specifically: readers were slower and less accurate with them, and ranked them last.',
+  },
+  fewdualaxes: {
+    authors: 'Stephen Few',
+    title: 'Dual-Scaled Axes in Graphs: Are They Ever the Best Solution?',
+    work: 'Perceptual Edge',
+    kind: 'paper',
+    blurb: 'Works through the dual-axis cases one at a time and concludes none of them survive contact with a better alternative.',
+  },
   schwabish: {
     authors: 'Jonathan Schwabish',
     title: 'Better Data Visualizations',
@@ -182,7 +196,7 @@ export const REFERENCES = {
     work: 'blog.datawrapper.de',
     url: 'https://blog.datawrapper.de/category/datavis-dos-and-donts/',
     kind: 'site',
-    blurb: 'Chart-type-by-chart-type “what to consider” posts, and the clearest free writing anywhere on choosing color scales.',
+    blurb: 'Chart-type-by-chart-type “what to consider” posts, plus a long-running series on color in data visualization.',
     free: true,
   },
   junkcharts: {
