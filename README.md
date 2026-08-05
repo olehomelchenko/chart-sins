@@ -3,20 +3,33 @@
 A catalogue of data-visualization sins — for each one: the chart that misleads,
 why it fools the eye, and the honest version that fixes it.
 
-Built with [Astro](https://astro.build). Charts are authored as
+Built with [Astro](https://astro.build) and styled on the
+[Carbon Design System](https://carbondesignsystem.com). Charts are authored as
 [Vega-Lite](https://vega.github.io/vega-lite/) specs and rendered to **static
 SVG at build time**, so pages ship with zero client-side JavaScript.
 
 ## Tech stack
 
-| Concern    | Choice                                              |
+| Concern    | Choice                											  |
 | ---------- | --------------------------------------------------- |
 | Framework  | Astro 5 (static output)                             |
 | Content    | Markdown/MDX via Astro Content Collections          |
 | Charts     | Vega-Lite specs → SVG at build (headless Vega)       |
-| Styling    | Plain scoped CSS + one global stylesheet            |
+| Design     | Carbon Design System — tokens, type scale, spacing, motion, themes |
+| Typeface   | IBM Plex Sans / Mono (self-hosted via `@fontsource`) |
+| Styling    | Token-driven CSS (`src/styles/global.css`)          |
 | Hosting    | GitHub Pages (via GitHub Actions)                   |
 | Language   | TypeScript                                          |
+
+### On the Carbon adoption
+
+Carbon ships React/web-component libraries built for application UIs and they
+ship JavaScript; this is a static content site, so instead of the component
+runtime we adopt Carbon at the **design-token level** — its color tokens and
+White/Gray-100 themes, the 8px spacing scale, the productive/expressive type
+distinction (IBM Plex), motion tokens, square geometry, the focus ring, and
+Carbon's **data-visualization palette** for the charts (validated for
+colorblind-safety and contrast on the chart surface).
 
 ## Project layout
 

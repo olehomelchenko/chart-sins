@@ -1,235 +1,575 @@
+/*
+  Chart Sins — styled on the Carbon Design System.
+
+  This is a token-driven layer, the way Carbon itself is built:
+  - Color/theme tokens mirror Carbon's White + Gray 100 themes, layered
+    (background -> layer-01 -> layer-02) rather than picked ad hoc.
+  - Spacing follows Carbon's 8px mini-unit scale ($spacing-01..13).
+  - Type is IBM Plex, split into Carbon's "productive" (UI/reading) and
+    "expressive" (large, light-weight display) moments.
+  - Motion uses Carbon's productive easing + duration tokens.
+  - Geometry is Carbon: square corners, 1px subtle borders, a 2px focus ring.
+*/
+
+/* ------------------------------------------------------------------ *\
+   Tokens — White theme (light) is the default :root.
+\* ------------------------------------------------------------------ */
 :root {
-  --bg: #fbf9f6;
-  --surface: #ffffff;
-  --text: #1c1a17;
-  --muted: #6b6660;
-  --border: #e6e1d9;
-  --accent: #7c3aed;
-  --sin-red: #c0392b;
-  --good-green: #1e8b5b;
-  --maxw: 68rem;
-  --radius: 12px;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* --- spacing scale (Carbon $spacing-01 .. 13) --- */
+  --spacing-01: 0.125rem;
+  --spacing-02: 0.25rem;
+  --spacing-03: 0.5rem;
+  --spacing-04: 0.75rem;
+  --spacing-05: 1rem;
+  --spacing-06: 1.5rem;
+  --spacing-07: 2rem;
+  --spacing-08: 2.5rem;
+  --spacing-09: 3rem;
+  --spacing-10: 4rem;
+  --spacing-11: 5rem;
+  --spacing-12: 6rem;
+  --spacing-13: 10rem;
+
+  /* --- motion (Carbon) --- */
+  --ease-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
+  --ease-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
+  --dur-fast: 110ms;
+  --dur-moderate: 150ms;
+  --dur-slow: 240ms;
+
+  /* --- layout --- */
+  --page-max: 82rem;
+  --measure: 40rem; /* Carbon reading measure ~640px */
+
+  /* --- color tokens: White theme --- */
+  --background: #ffffff;
+  --layer-01: #f4f4f4;
+  --layer-02: #ffffff;
+  --layer-hover-01: #e8e8e8;
+  --border-subtle: #e0e0e0;
+  --border-strong: #8d8d8d;
+  --text-primary: #161616;
+  --text-secondary: #525252;
+  --text-helper: #6f6f6f;
+  --text-on-color: #ffffff;
+  --link-primary: #0f62fe;
+  --link-hover: #0043ce;
+  --interactive: #0f62fe;
+  --focus: #0f62fe;
+  --support-error: #da1e28;
+  --support-success: #198038;
+
+  /* header/footer shell is always dark in Carbon */
+  --shell-bg: #161616;
+  --shell-border: #393939;
+  --shell-text: #f4f4f4;
+  --shell-text-secondary: #a8a8a8;
+
+  /* chart canvas — a fixed light Carbon layer in BOTH themes, so the
+     build-time-baked chart ink keeps AA contrast without theme-reactive SVG */
+  --chart-canvas: #f4f4f4;
+
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  color-scheme: light;
 }
 
+/* --- Gray 100 theme (dark) --- */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #16140f;
-    --surface: #201d17;
-    --text: #f3efe8;
-    --muted: #a8a196;
-    --border: #35302a;
-    --accent: #a78bfa;
-    --sin-red: #e07668;
-    --good-green: #4cc38a;
+    --background: #161616;
+    --layer-01: #262626;
+    --layer-02: #393939;
+    --layer-hover-01: #333333;
+    --border-subtle: #393939;
+    --border-strong: #6f6f6f;
+    --text-primary: #f4f4f4;
+    --text-secondary: #c6c6c6;
+    --text-helper: #8d8d8d;
+    --text-on-color: #ffffff;
+    --link-primary: #78a9ff;
+    --link-hover: #a6c8ff;
+    --interactive: #4589ff;
+    --focus: #ffffff;
+    --support-error: #fa4d56;
+    --support-success: #42be65;
+    color-scheme: dark;
   }
 }
 
+/* ------------------------------------------------------------------ *\
+   Base
+\* ------------------------------------------------------------------ */
 * {
   box-sizing: border-box;
 }
 
 html {
-  background: var(--bg);
-  color: var(--text);
-  scroll-behavior: smooth;
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   margin: 0;
-  line-height: 1.6;
+  /* Carbon productive body-02 */
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0;
 }
 
 a {
-  color: var(--accent);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-}
-
-.wrap {
-  max-width: var(--maxw);
-  margin-inline: auto;
-  padding-inline: 1.25rem;
-}
-
-.site-header {
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
-}
-.site-header .wrap {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  padding-block: 1rem;
-  flex-wrap: wrap;
-}
-.site-header a.brand {
-  font-weight: 800;
-  font-size: 1.25rem;
-  letter-spacing: -0.01em;
-  color: var(--text);
+  color: var(--link-primary);
   text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-fast) var(--ease-productive),
+    color var(--dur-fast) var(--ease-productive);
 }
-.site-header .tagline {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.site-footer {
-  border-top: 1px solid var(--border);
-  margin-top: 4rem;
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-.site-footer .wrap {
-  padding-block: 2rem;
+a:hover {
+  color: var(--link-hover);
+  border-bottom-color: currentColor;
 }
 
-.severity {
-  letter-spacing: 1px;
-  font-size: 0.9rem;
-  color: var(--sin-red);
+/* Carbon focus ring — 2px, high-contrast, square */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 0;
 }
 
-.pill {
-  display: inline-block;
-  font-size: 0.75rem;
-  padding: 0.15rem 0.6rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  color: var(--muted);
-  background: var(--bg);
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--layer-01);
+  border: 1px solid var(--border-subtle);
+  padding: 0 var(--spacing-02);
 }
 
-/* --- index gallery --- */
-.hero {
-  padding-block: 3rem 1.5rem;
-}
-.hero h1 {
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  line-height: 1.1;
-  margin: 0 0 0.75rem;
+/* ------------------------------------------------------------------ *\
+   Type scale — productive + expressive (Carbon)
+\* ------------------------------------------------------------------ */
+.expressive-display {
+  font-weight: 300; /* Carbon expressive uses light weight at large sizes */
+  font-size: clamp(2.25rem, 1.4rem + 4.2vw, 4rem);
+  line-height: 1.07;
   letter-spacing: -0.02em;
+  margin: 0;
 }
-.hero p {
-  color: var(--muted);
-  font-size: 1.1rem;
-  max-width: 44rem;
+.expressive-heading {
+  font-weight: 400;
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2rem);
+  line-height: 1.25;
+  letter-spacing: 0;
+  margin: 0;
+}
+.productive-heading-03 {
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin: var(--spacing-07) 0 var(--spacing-03);
+}
+.label-01 {
+  font-size: 0.75rem;
+  line-height: 1.34;
+  letter-spacing: 0.32px;
+  color: var(--text-helper);
+}
+.helper {
+  color: var(--text-secondary);
 }
 
+/* ------------------------------------------------------------------ *\
+   Layout primitives
+\* ------------------------------------------------------------------ */
+.wrap {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--spacing-05);
+}
+@media (min-width: 42rem) {
+  .wrap {
+    padding-inline: var(--spacing-07);
+  }
+}
+
+/* ------------------------------------------------------------------ *\
+   UI Shell header — Carbon's header is dark in every theme
+\* ------------------------------------------------------------------ */
+.cds-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--shell-bg);
+  border-bottom: 1px solid var(--shell-border);
+}
+.cds-header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-05);
+  height: 3rem;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--spacing-05);
+}
+.cds-header__name {
+  color: var(--shell-text);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.1px;
+  text-decoration: none;
+  border: 0;
+}
+.cds-header__name:hover {
+  color: var(--shell-text);
+}
+.cds-header__name .mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
+.cds-header__tag {
+  color: var(--shell-text-secondary);
+  font-size: 0.8125rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0;
+}
+@media (max-width: 40rem) {
+  .cds-header__tag {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *\
+   Tag (Carbon tags are the one rounded element)
+\* ------------------------------------------------------------------ */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 1.5rem;
+  padding-inline: var(--spacing-04);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  line-height: 1;
+  letter-spacing: 0.16px;
+  white-space: nowrap;
+  background: var(--layer-01);
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+}
+/* Carbon tag color pairings (light bg + readable ink) */
+.tag--purple { background: #e8daff; color: #491d8b; }
+.tag--teal   { background: #9ef0f0; color: #005d5d; }
+.tag--red    { background: #ffd7d9; color: #a2191f; }
+.tag--blue   { background: #d0e2ff; color: #002d9c; }
+.tag--magenta{ background: #ffd6e8; color: #9f1853; }
+@media (prefers-color-scheme: dark) {
+  .tag--purple { background: #491d8b; color: #e8daff; }
+  .tag--teal   { background: #005d5d; color: #9ef0f0; }
+  .tag--red    { background: #a2191f; color: #ffd7d9; }
+  .tag--blue   { background: #0043ce; color: #d0e2ff; }
+  .tag--magenta{ background: #9f1853; color: #ffd6e8; }
+}
+
+/* ------------------------------------------------------------------ *\
+   Severity meter — 5 geometric units (Carbon-flavored, not emoji)
+\* ------------------------------------------------------------------ */
+.severity {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-03);
+  font-size: 0.75rem;
+  color: var(--text-helper);
+  letter-spacing: 0.32px;
+}
+.severity__meter {
+  display: inline-flex;
+  gap: 3px;
+}
+.severity__unit {
+  width: 0.75rem;
+  height: 0.75rem;
+  background: var(--border-subtle);
+}
+.severity__unit--on {
+  background: var(--support-error);
+}
+
+/* ------------------------------------------------------------------ *\
+   Hero
+\* ------------------------------------------------------------------ */
+.hero {
+  padding-block: var(--spacing-10) var(--spacing-07);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.16px;
+  color: var(--text-helper);
+  margin: 0 0 var(--spacing-05);
+}
+.hero__lede {
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  line-height: 1.4;
+  max-width: var(--measure);
+  margin: var(--spacing-05) 0 0;
+  font-weight: 300;
+}
+
+/* ------------------------------------------------------------------ *\
+   Gallery of tiles
+\* ------------------------------------------------------------------ */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-  gap: 1.25rem;
-  padding-block: 1rem 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  gap: 1px; /* Carbon tiles sit in a 1px grid of border color */
+  background: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+  margin-block: var(--spacing-09) var(--spacing-10);
 }
-
-.card {
+.tile {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  padding: 1.25rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  text-decoration: none;
+  gap: var(--spacing-04);
+  padding: var(--spacing-06);
+  min-height: 12rem;
+  background: var(--layer-01);
   color: inherit;
-  transition: transform 0.12s ease, border-color 0.12s ease;
+  text-decoration: none;
+  border: 0;
+  position: relative;
+  transition: background var(--dur-fast) var(--ease-productive);
 }
-.card:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
+.tile:hover {
+  background: var(--layer-hover-01);
+  color: inherit;
 }
-.card h3 {
+/* interactive affordance: a blue rule that slides in on hover (productive motion) */
+.tile::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: var(--interactive);
+  transition: width var(--dur-moderate) var(--ease-productive);
+}
+.tile:hover::after {
+  width: 100%;
+}
+.tile__title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.3;
   margin: 0;
-  font-size: 1.15rem;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
-.card p {
+.tile__summary {
   margin: 0;
-  color: var(--muted);
-  font-size: 0.92rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.43;
 }
-.card .meta {
+.tile__meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: var(--spacing-05);
   margin-top: auto;
+  padding-top: var(--spacing-04);
+}
+.tile__go {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--interactive);
 }
 
-/* --- sin detail page --- */
+/* ------------------------------------------------------------------ *\
+   Sin detail
+\* ------------------------------------------------------------------ */
+.breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  padding-top: var(--spacing-07);
+}
 .sin {
-  padding-block: 2.5rem;
+  padding-bottom: var(--spacing-10);
 }
-.sin header {
-  margin-bottom: 2rem;
+.sin__head {
+  padding-block: var(--spacing-05) var(--spacing-07);
+  border-bottom: 1px solid var(--border-subtle);
 }
-.sin h1 {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  margin: 0.4rem 0 0.5rem;
-  letter-spacing: -0.02em;
-}
-.sin .tags {
+.sin__meta {
   display: flex;
-  gap: 0.4rem;
   flex-wrap: wrap;
-  margin-top: 0.75rem;
+  align-items: center;
+  gap: var(--spacing-05);
+  margin-bottom: var(--spacing-05);
+}
+.sin__title {
+  margin: 0;
+}
+.sin__tags {
+  display: flex;
+  gap: var(--spacing-03);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-05);
 }
 
 .compare {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin: 2rem 0;
+  gap: 1px;
+  background: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
+  margin-block: var(--spacing-08);
 }
-@media (min-width: 46rem) {
+@media (min-width: 48rem) {
   .compare {
     grid-template-columns: 1fr 1fr;
   }
 }
-.compare .panel {
-  padding: 1.25rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--surface);
+.panel {
+  background: var(--layer-01);
+  padding: var(--spacing-06);
 }
-.compare .panel.bad {
-  border-top: 4px solid var(--sin-red);
-}
-.compare .panel.good {
-  border-top: 4px solid var(--good-green);
-}
-.compare .panel h2 {
-  margin: 0 0 1rem;
-  font-size: 1rem;
+.panel__label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-03);
+  margin: 0 0 var(--spacing-05);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.32px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
-.compare .panel.bad h2 {
-  color: var(--sin-red);
+.panel__label::before {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
 }
-.compare .panel.good h2 {
-  color: var(--good-green);
+.panel--bad .panel__label {
+  color: var(--support-error);
+}
+.panel--bad .panel__label::before {
+  background: var(--support-error);
+}
+.panel--good .panel__label {
+  color: var(--support-success);
+}
+.panel--good .panel__label::before {
+  background: var(--support-success);
 }
 
+/* build-time chart, on a fixed light Carbon canvas */
+.vega-chart {
+  margin: 0;
+}
+.vega-chart__svg {
+  background: var(--chart-canvas);
+  padding: var(--spacing-05);
+  overflow-x: auto;
+}
+.vega-chart__svg svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.vega-chart figcaption {
+  margin-top: var(--spacing-04);
+  font-size: 0.75rem;
+  color: var(--text-helper);
+}
+.vega-chart__error {
+  padding: var(--spacing-05);
+  border: 1px solid var(--support-error);
+  color: var(--support-error);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+.vega-chart__error code {
+  display: block;
+  margin-top: var(--spacing-03);
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+/* long-form prose — Carbon reading measure + productive type */
 .prose {
-  max-width: 42rem;
+  max-width: var(--measure);
+  margin-top: var(--spacing-08);
+}
+.prose > :first-child {
+  margin-top: 0;
 }
 .prose h2 {
-  margin-top: 2rem;
-  letter-spacing: -0.01em;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: var(--spacing-08) 0 var(--spacing-03);
 }
-.prose code {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0.1rem 0.35rem;
-  font-size: 0.9em;
+.prose p {
+  margin: 0 0 var(--spacing-05);
+  color: var(--text-secondary);
+}
+.prose strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.prose em {
+  color: var(--text-primary);
 }
 
-.back-link {
-  display: inline-block;
-  margin-top: 3rem;
-  font-size: 0.9rem;
+/* ------------------------------------------------------------------ *\
+   Footer + colophon
+\* ------------------------------------------------------------------ */
+.cds-footer {
+  background: var(--layer-01);
+  border-top: 1px solid var(--border-subtle);
+  margin-top: var(--spacing-12);
+}
+.cds-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-05) var(--spacing-09);
+  padding-block: var(--spacing-08);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+.cds-footer__col strong {
+  display: block;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: var(--spacing-03);
+}
+.cds-footer__col p {
+  margin: 0;
+  max-width: 22rem;
+  line-height: 1.5;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  left: var(--spacing-05);
+  top: var(--spacing-03);
+  z-index: 20;
+  background: var(--interactive);
+  color: var(--text-on-color);
+  padding: var(--spacing-03) var(--spacing-05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
 }

@@ -19,15 +19,15 @@
   },
   "layer": [
     {
-      "mark": { "type": "line", "color": "#c0392b", "point": true },
+      "mark": { "type": "line", "color": "#fa4d56", "point": true },
       "encoding": {
-        "y": { "field": "icecream", "type": "quantitative", "title": "Ice cream sales", "axis": { "titleColor": "#c0392b" } }
+        "y": { "field": "icecream", "type": "quantitative", "title": "Ice cream sales", "axis": { "titleColor": "#fa4d56" } }
       }
     },
     {
-      "mark": { "type": "line", "color": "#2980b9", "point": true },
+      "mark": { "type": "line", "color": "#1192e8", "point": true },
       "encoding": {
-        "y": { "field": "sharks", "type": "quantitative", "title": "Shark attacks", "axis": { "titleColor": "#2980b9" } }
+        "y": { "field": "sharks", "type": "quantitative", "title": "Shark attacks", "axis": { "titleColor": "#1192e8" } }
       }
     }
   ],

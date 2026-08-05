@@ -23,7 +23,24 @@ export function getChartSpec(name: string): TopLevelSpec {
   return spec;
 }
 
-/** Render a 1–5 severity as flame glyphs for display. */
-export function severityFlames(severity: number): string {
-  return '🔥'.repeat(severity) + '·'.repeat(Math.max(0, 5 - severity));
+/** A 1–5 severity as five booleans, for the Carbon-style severity meter. */
+export function severityUnits(severity: number): boolean[] {
+  return Array.from({ length: 5 }, (_, i) => i < severity);
+}
+
+// Stable category -> Carbon tag color. Known categories get a hand-picked hue;
+// anything new hashes to a stable colour so the palette never churns.
+const TAG_COLORS = ['purple', 'teal', 'red', 'blue', 'magenta'] as const;
+const CATEGORY_TAG: Record<string, (typeof TAG_COLORS)[number]> = {
+  'Misleading Scales': 'blue',
+  'False Relationships': 'magenta',
+  'Chart-Type Abuse': 'purple',
+};
+
+/** Map a category label to a Carbon tag colour modifier. */
+export function tagModifier(category: string): (typeof TAG_COLORS)[number] {
+  if (CATEGORY_TAG[category]) return CATEGORY_TAG[category];
+  let hash = 0;
+  for (let i = 0; i < category.length; i++) hash = (hash * 31 + category.charCodeAt(i)) >>> 0;
+  return TAG_COLORS[hash % TAG_COLORS.length];
 }

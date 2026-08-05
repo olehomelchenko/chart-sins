@@ -12,7 +12,7 @@
       { "month": "Jun", "revenue": 98 }
     ]
   },
-  "mark": { "type": "bar", "color": "#1e8b5b" },
+  "mark": { "type": "bar", "color": "#198038" },
   "encoding": {
     "x": {
       "field": "month",

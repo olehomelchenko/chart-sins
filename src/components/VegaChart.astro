@@ -1,39 +1,76 @@
 ---
-// Build-time Vega-Lite renderer.
+// Build-time Vega-Lite renderer, themed on Carbon.
 //
-// This component runs only during `astro build` (and dev SSR), never in the
-// browser. It compiles a Vega-Lite spec to Vega, renders it to a static SVG
-// string with Vega's headless view, and inlines that SVG. The result ships as
-// plain markup — zero client-side JavaScript, no Vega runtime downloaded.
+// Runs only during `astro build` (and dev SSR), never in the browser: it
+// compiles a Vega-Lite spec to Vega with a Carbon theme (IBM Plex type +
+// Carbon's data-visualization palette), renders it headlessly to a static SVG
+// string, and inlines it. Zero client-side JavaScript, no Vega runtime shipped.
 //
-// To make a specific chart interactive later, you would swap this component
-// out for a client-side vega-embed island on that page only.
+// The chart sits on a fixed light Carbon canvas (--chart-canvas) in both
+// themes, so this single baked render keeps AA contrast in light and dark.
 import * as vega from 'vega';
-import { compile, type TopLevelSpec } from 'vega-lite';
+import { compile, type TopLevelSpec, type Config } from 'vega-lite';
 
 interface Props {
-  /** A Vega-Lite spec (object). Do not include $schema/width/height/config. */
   spec: TopLevelSpec;
-  /** Accessible description of what the chart shows. */
   title: string;
-  /** Optional caption rendered under the chart. */
   caption?: string;
 }
 
 const { spec, title, caption } = Astro.props;
 
+// Carbon Vega theme — the design-system parameters the renderer consumes.
+const carbonTheme: Config = {
+  font: 'IBM Plex Sans',
+  background: 'transparent',
+  view: { stroke: null },
+  title: {
+    color: '#161616',
+    font: 'IBM Plex Sans',
+    fontSize: 13,
+    fontWeight: 600,
+    anchor: 'start',
+    dy: -8,
+  },
+  axis: {
+    labelFont: 'IBM Plex Sans',
+    labelFontSize: 11,
+    labelColor: '#525252',
+    titleFont: 'IBM Plex Sans',
+    titleFontSize: 12,
+    titleFontWeight: 600,
+    titleColor: '#393939',
+    gridColor: '#e0e0e0',
+    domainColor: '#8d8d8d',
+    tickColor: '#8d8d8d',
+    labelPadding: 4,
+  },
+  legend: {
+    labelFont: 'IBM Plex Sans',
+    labelFontSize: 11,
+    labelColor: '#525252',
+    titleFont: 'IBM Plex Sans',
+    titleFontSize: 12,
+    titleColor: '#393939',
+    symbolType: 'square',
+  },
+  // Carbon data-visualization categorical palette (validated: passes the
+  // dataviz colorblind/contrast checks on the --chart-canvas surface).
+  range: {
+    category: ['#8a3ffc', '#009d9a', '#fa4d56', '#0f62fe', '#24a148', '#d02670', '#b28600', '#1192e8'],
+  },
+};
+
 let svg = '';
 let error: string | null = null;
 
 try {
-  // Compile Vega-Lite -> Vega, then render headlessly to SVG.
-  const vgSpec = compile(spec as TopLevelSpec).spec;
+  const vgSpec = compile(spec, { config: carbonTheme }).spec;
   const view = new vega.View(vega.parse(vgSpec), { renderer: 'none' }).initialize();
   svg = await view.toSVG();
   view.finalize();
 } catch (e) {
   error = e instanceof Error ? e.message : String(e);
-  // Fail loudly in the build log, but don't crash the whole build.
   console.error(`[VegaChart] failed to render "${title}": ${error}`);
 }
 ---
@@ -49,32 +86,3 @@ try {
   )}
   {caption && <figcaption>{caption}</figcaption>}
 </figure>
-
-<style>
-  .vega-chart {
-    margin: 0;
-  }
-  .vega-chart__svg :global(svg) {
-    max-width: 100%;
-    height: auto;
-  }
-  .vega-chart figcaption {
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-    color: var(--muted);
-    text-align: center;
-  }
-  .vega-chart__error {
-    padding: 1rem;
-    border: 1px dashed var(--sin-red);
-    border-radius: 8px;
-    color: var(--sin-red);
-    font-size: 0.85rem;
-  }
-  .vega-chart__error code {
-    display: block;
-    margin-top: 0.5rem;
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
-</style>

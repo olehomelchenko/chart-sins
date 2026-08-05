@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { severityFlames } from '../lib/charts';
+import { severityUnits, tagModifier } from '../lib/charts';
 import { href } from '../lib/url';
 
 const sins = (await getCollection('sins', ({ data }) => !data.draft)).sort((a, b) => {
@@ -13,10 +13,11 @@ const sins = (await getCollection('sins', ({ data }) => !data.draft)).sort((a, b
 
 <BaseLayout title="Chart Sins">
   <section class="wrap hero">
-    <h1>A catalogue of chart sins.</h1>
-    <p>
-      Every entry is a data-visualization mistake in the wild: the chart that
-      misleads, why it fools the eye, and the honest version that fixes it.
+    <p class="hero__eyebrow">// a catalogue of data-visualization sins</p>
+    <h1 class="expressive-display">Charts that lie,<br />and the honest fix.</h1>
+    <p class="hero__lede">
+      Each entry is a data-visualization mistake in the wild: the chart that
+      misleads, why it fools the eye, and the honest version that repents.
     </p>
   </section>
 
@@ -24,15 +25,19 @@ const sins = (await getCollection('sins', ({ data }) => !data.draft)).sort((a, b
     <div class="gallery">
       {
         sins.map((sin) => (
-          <a class="card" href={href(`sins/${sin.id}/`)}>
-            <span class="pill">{sin.data.category}</span>
-            <h3>{sin.data.title}</h3>
-            <p>{sin.data.summary}</p>
-            <div class="meta">
-              <span class="severity" title={`Severity ${sin.data.severity} of 5`}>
-                {severityFlames(sin.data.severity)}
+          <a class="tile" href={href(`sins/${sin.id}/`)}>
+            <span class={`tag tag--${tagModifier(sin.data.category)}`}>{sin.data.category}</span>
+            <h2 class="tile__title">{sin.data.title}</h2>
+            <p class="tile__summary">{sin.data.summary}</p>
+            <div class="tile__meta">
+              <span class="severity" aria-label={`Severity ${sin.data.severity} of 5`}>
+                <span class="severity__meter" aria-hidden="true">
+                  {severityUnits(sin.data.severity).map((on) => (
+                    <span class={`severity__unit${on ? ' severity__unit--on' : ''}`} />
+                  ))}
+                </span>
               </span>
-              <span class="pill">Read →</span>
+              <span class="tile__go">Read →</span>
             </div>
           </a>
         ))

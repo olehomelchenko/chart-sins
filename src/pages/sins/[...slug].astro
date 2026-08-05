@@ -2,7 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VegaChart from '../../components/VegaChart.astro';
-import { getChartSpec, severityFlames } from '../../lib/charts';
+import { getChartSpec, severityUnits, tagModifier } from '../../lib/charts';
 import { href } from '../../lib/url';
 
 export async function getStaticPaths() {
@@ -22,24 +22,33 @@ const fixedSpec = getChartSpec(sin.data.fixedChart);
 
 <BaseLayout title={`${sin.data.title} — Chart Sins`} description={sin.data.summary}>
   <article class="wrap sin">
-    <header>
-      <span class="pill">{sin.data.category}</span>
-      <h1>{sin.data.title}</h1>
-      <span class="severity" title={`Severity ${sin.data.severity} of 5`}>
-        {severityFlames(sin.data.severity)}
-      </span>
-      <div class="tags">
-        {sin.data.tags.map((t) => <span class="pill">{t}</span>)}
+    <nav class="breadcrumb"><a href={href()}>All sins</a> / {sin.data.title}</nav>
+
+    <header class="sin__head">
+      <div class="sin__meta">
+        <span class={`tag tag--${tagModifier(sin.data.category)}`}>{sin.data.category}</span>
+        <span class="severity" aria-label={`Severity ${sin.data.severity} of 5`}>
+          <span class="severity__meter" aria-hidden="true">
+            {severityUnits(sin.data.severity).map((on) => (
+              <span class={`severity__unit${on ? ' severity__unit--on' : ''}`} />
+            ))}
+          </span>
+          Severity {sin.data.severity}/5
+        </span>
+      </div>
+      <h1 class="sin__title expressive-heading">{sin.data.title}</h1>
+      <div class="sin__tags">
+        {sin.data.tags.map((t) => <span class="tag">{t}</span>)}
       </div>
     </header>
 
     <div class="compare">
-      <div class="panel bad">
-        <h2>The Sin</h2>
+      <div class="panel panel--bad">
+        <p class="panel__label">The Sin</p>
         <VegaChart spec={badSpec} title={`Misleading chart: ${sin.data.title}`} />
       </div>
-      <div class="panel good">
-        <h2>The Fix</h2>
+      <div class="panel panel--good">
+        <p class="panel__label">The Fix</p>
         <VegaChart spec={fixedSpec} title={`Honest chart: ${sin.data.title}`} />
       </div>
     </div>
@@ -47,7 +56,5 @@ const fixedSpec = getChartSpec(sin.data.fixedChart);
     <div class="prose">
       <Content />
     </div>
-
-    <a class="back-link" href={href()}>← All sins</a>
   </article>
 </BaseLayout>

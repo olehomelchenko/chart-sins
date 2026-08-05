@@ -16,7 +16,7 @@
     {
       "width": 360,
       "height": 110,
-      "mark": { "type": "line", "color": "#c0392b", "point": true },
+      "mark": { "type": "line", "color": "#fa4d56", "point": true },
       "encoding": {
         "x": { "field": "month", "type": "ordinal", "sort": null, "axis": { "title": null, "labels": false } },
         "y": { "field": "icecream", "type": "quantitative", "scale": { "zero": true }, "title": "Ice cream" }
@@ -25,7 +25,7 @@
     {
       "width": 360,
       "height": 110,
-      "mark": { "type": "line", "color": "#2980b9", "point": true },
+      "mark": { "type": "line", "color": "#1192e8", "point": true },
       "encoding": {
         "x": { "field": "month", "type": "ordinal", "sort": null, "axis": { "title": null, "labelAngle": 0 } },
         "y": { "field": "sharks", "type": "quantitative", "scale": { "zero": true }, "title": "Shark attacks" }
