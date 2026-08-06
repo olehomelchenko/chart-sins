@@ -1,0 +1,19 @@
+---
+// The pictogram that stands in for a sin in navigation — a banner across the
+// top of a gallery tile, or a small glyph beside a cross-link.
+//
+// Always decorative: the sin's title sits right next to it and carries the
+// meaning, so announcing the glyph too would just be a duplicate.
+import { getThumb } from '../lib/thumbs';
+
+interface Props {
+  slug: string;
+  /** "banner" for the gallery tile, "glyph" for the compact cross-link row. */
+  variant?: 'banner' | 'glyph';
+}
+
+const { slug, variant = 'banner' } = Astro.props;
+const svg = getThumb(slug);
+---
+
+<span class={`thumb thumb--${variant}`} aria-hidden="true" set:html={svg} />

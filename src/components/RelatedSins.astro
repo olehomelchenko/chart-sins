@@ -2,6 +2,7 @@
 // "While you're here" — the other sins a chart like this usually commits.
 // Charts rarely break one rule at a time, and the person you sent this to may
 // need the neighbouring page more than this one. Renders nothing when empty.
+import SinThumb from './SinThumb.astro';
 import { href } from '../lib/url';
 import { severityUnits } from '../lib/charts';
 
@@ -19,6 +20,7 @@ const { sins } = Astro.props;
       <ul class="related__list">
         {sins.map((s) => (
           <li class="related__item">
+            <SinThumb slug={s.id} variant="glyph" />
             <a class="related__link" href={href(`sins/${s.id}/`)}>
               <span class="related__name">{s.data.title}</span>
               <span class="related__summary">{s.data.summary}</span>

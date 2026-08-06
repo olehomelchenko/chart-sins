@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SinThumb from '../components/SinThumb.astro';
 import { severityUnits, tagModifier } from '../lib/charts';
 import { href } from '../lib/url';
 
@@ -27,6 +28,7 @@ const sins = (await getCollection('sins', ({ data }) => !data.draft)).sort((a, b
       {
         sins.map((sin) => (
           <a class="tile" href={href(`sins/${sin.id}/`)}>
+            <SinThumb slug={sin.id} />
             <span class={`tag tag--${tagModifier(sin.data.category)}`}>{sin.data.category}</span>
             <h2 class="tile__title">{sin.data.title}</h2>
             <p class="tile__summary">{sin.data.summary}</p>

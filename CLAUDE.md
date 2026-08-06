@@ -96,7 +96,34 @@ Each sin page follows one shape: **poke → proof → why → the fix → receip
      a renamed slug fails the build rather than shipping a dead link.
    - `compareNote` — overrides "Same numbers, both charts," which is wrong on a
      sin whose whole point is an omission.
-4. `npm run dev` and check. The OG card for the sin is generated automatically.
+4. Draw the thumbnail: `src/thumbs/<slug>.svg` (see "Thumbnails" below). The
+   build throws if it's missing.
+5. `npm run dev` and check. The OG card for the sin is generated automatically.
+
+## Thumbnails
+
+Every sin has a hand-drawn pictogram at `src/thumbs/<slug>.svg`, used as a
+banner across the top of its gallery tile and as a small glyph in the
+"Often found together" cross-links. Lookup is `src/lib/thumbs.ts`, rendered by
+`SinThumb.astro`; a missing file fails the build.
+
+- **A symbol of the sin, not a shrunken chart.** In nearly every sin the tell
+  lives in the axis, the scale or the legend — exactly what a chart loses when
+  you shrink it to 120px. A miniature of the bad chart throws away the evidence
+  and leaves a gallery of indistinguishable squiggles. Draw the *tell*: a cut
+  baseline, a down-pointing axis arrow, class breaks that moved.
+- **The glyph shows the sin, not the fix.** The tile is a rogues' gallery you
+  scan for the one you recognise; the correction lives on the page.
+- `viewBox="0 0 72 48"`, `fill="none"`, stroke-width 2 for structure. Neutral
+  linework is `currentColor`; the offending element takes `var(--thumb-accent)`.
+  `--thumb-alt` and `--thumb-third` exist for glyphs that need to show two or
+  three distinct series (dual axis, mismatched category colours).
+- Those three vars resolve to site tokens in `global.css`, so **unlike the
+  charts, thumbnails follow the light/dark theme** — they don't need the fixed
+  `--chart-canvas`, and they must stay legible on both `--layer-02` surfaces.
+- Check the result at both sizes: the banner is ~72px tall, the cross-link
+  glyph ~36px. A glyph that needs more than about six strokes won't survive the
+  smaller one.
 
 ## Design & rendering
 

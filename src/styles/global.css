@@ -339,6 +339,47 @@ code {
   border: 1px solid var(--border-subtle);
   margin-block: var(--spacing-09) var(--spacing-10);
 }
+/* ------------------------------------------------------------------ *\
+   Sin thumbnails — a pictogram of the sin, not a shrunken chart.
+   Drawn against currentColor plus three accents, so unlike the baked
+   chart SVGs these follow the theme instead of a fixed canvas.
+\* ------------------------------------------------------------------ */
+.thumb {
+  --thumb-accent: var(--support-error);
+  --thumb-alt: var(--interactive);
+  --thumb-third: var(--support-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  color: var(--text-secondary);
+  transition: color var(--dur-fast) var(--ease-productive);
+}
+.thumb svg {
+  display: block;
+  height: 100%;
+  width: auto;
+}
+/* banner: bleeds to the tile edges, above everything else in the tile */
+.thumb--banner {
+  height: 7rem;
+  padding: var(--spacing-05) var(--spacing-06);
+  background: var(--layer-02);
+  border-bottom: 1px solid var(--border-subtle);
+  margin: calc(-1 * var(--spacing-06)) calc(-1 * var(--spacing-06)) var(--spacing-02);
+  transition:
+    color var(--dur-fast) var(--ease-productive),
+    background var(--dur-fast) var(--ease-productive);
+}
+.tile:hover .thumb {
+  color: var(--text-primary);
+}
+/* glyph: the compact form for cross-link rows */
+.thumb--glyph {
+  height: 2.25rem;
+  width: 3.375rem;
+}
+
 .tile {
   display: flex;
   flex-direction: column;
@@ -708,6 +749,7 @@ a.receipt__work {
   text-decoration: none;
   display: grid;
   gap: var(--spacing-02);
+  flex: 1;
 }
 .related__name {
   font-weight: 600;

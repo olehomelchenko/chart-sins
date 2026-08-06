@@ -1,0 +1,16 @@
+<!-- The same ramp twice, with the class breaks moved in between. -->
+<svg viewBox="0 0 72 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g fill="currentColor">
+    <rect x="10" y="8" width="13" height="11" opacity=".15" />
+    <rect x="23" y="8" width="13" height="11" opacity=".4" />
+    <rect x="36" y="8" width="13" height="11" opacity=".65" />
+    <rect x="49" y="8" width="13" height="11" opacity=".9" />
+    <rect x="10" y="29" width="9" height="11" opacity=".15" />
+    <rect x="19" y="29" width="17" height="11" opacity=".4" />
+    <rect x="36" y="29" width="17" height="11" opacity=".65" />
+    <rect x="53" y="29" width="9" height="11" opacity=".9" />
+  </g>
+  <path d="M10 8h52v11H10zM10 29h52v11H10z" stroke="currentColor" stroke-width="1.5" />
+  <path d="M23 8v11M36 8v11M49 8v11" stroke="currentColor" stroke-width="1.5" />
+  <path d="M19 26v17M36 26v17M53 26v17" stroke="var(--thumb-accent)" stroke-width="2" />
+</svg>

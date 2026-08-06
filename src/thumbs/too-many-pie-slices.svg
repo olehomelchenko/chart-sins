@@ -1,0 +1,10 @@
+<!-- A whole cut into more wedges than anyone can rank by eye. -->
+<svg viewBox="0 0 72 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="36" cy="24" r="17" stroke="currentColor" stroke-width="2" />
+  <path
+    d="M36 24 36 7M36 24 44.5 9.3M36 24 50.7 15.5M36 24 53 24M36 24 50.7 32.5M36 24 44.5 38.7M36 24 36 41M36 24 27.5 38.7M36 24 21.3 32.5M36 24 19 24M36 24 21.3 15.5M36 24 27.5 9.3"
+    stroke="currentColor"
+    stroke-width="1.25"
+    opacity=".85"
+  />
+</svg>

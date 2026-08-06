@@ -1,0 +1,7 @@
+<!-- Three quarters of a result, with the fourth simply absent. -->
+<svg viewBox="0 0 72 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M36 24h17A17 17 0 1 1 36 7z" fill="currentColor" opacity=".14" />
+  <path d="M53 24A17 17 0 1 1 36 7" stroke="currentColor" stroke-width="2" />
+  <path d="M36 24v17M36 24H19" stroke="currentColor" stroke-width="2" />
+  <path d="M36 24h17M36 24V7" stroke="var(--thumb-accent)" stroke-width="2" />
+</svg>

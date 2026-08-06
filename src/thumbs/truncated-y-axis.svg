@@ -1,0 +1,5 @@
+<!-- Bars floating on a baseline that has been cut away. -->
+<svg viewBox="0 0 72 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M18 36V14M36 36V8M54 36V20" stroke="currentColor" stroke-width="8" />
+  <path d="M6 39h13l3-5 4 10 3-5h37" stroke="var(--thumb-accent)" stroke-width="2" />
+</svg>

@@ -1,0 +1,14 @@
+<!-- Bars in one order of colours, their labels in another. -->
+<svg viewBox="0 0 72 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke-width="10">
+    <path d="M18 32V12" stroke="var(--thumb-alt)" />
+    <path d="M36 32V18" stroke="var(--thumb-third)" />
+    <path d="M54 32V8" stroke="var(--thumb-accent)" />
+  </g>
+  <path d="M8 33h56" stroke="currentColor" stroke-width="2" />
+  <g>
+    <rect x="14" y="38" width="8" height="8" fill="var(--thumb-third)" />
+    <rect x="32" y="38" width="8" height="8" fill="var(--thumb-accent)" />
+    <rect x="50" y="38" width="8" height="8" fill="var(--thumb-alt)" />
+  </g>
+</svg>

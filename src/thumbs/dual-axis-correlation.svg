@@ -1,0 +1,7 @@
+<!-- Two scales, tuned until the two series trace one path. -->
+<svg viewBox="0 0 72 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 8v32M6 14h4M6 24h4M6 34h4" stroke="var(--thumb-accent)" stroke-width="2" />
+  <path d="M62 8v32M62 12h4M62 22h4M62 32h4" stroke="var(--thumb-alt)" stroke-width="2" />
+  <path d="M15 31l12-7 12 3 18-13" stroke="var(--thumb-accent)" stroke-width="2" />
+  <path d="M15 37l12-7 12 3 18-13" stroke="var(--thumb-alt)" stroke-width="2" />
+</svg>
